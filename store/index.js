@@ -4,7 +4,7 @@ export const useImageStore = defineStore("images", {
   state: () => {
     return {
       images: [],
-      selectedItem: null,
+      selectedImage: null,
       isOpen: false,
       page: 1,
       query: "",

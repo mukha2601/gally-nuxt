@@ -6,5 +6,5 @@ const imageStore = useImageStore();
 <template>
   <Modal />
   <Grid :images="imageStore.images" />
-  <UButton @click="imageStore." class="p-4 border-2">Show More</UButton>
+  <UButton @click="imageStore.showMore()" class="p-4 border-2">Show More</UButton>
 </template>
