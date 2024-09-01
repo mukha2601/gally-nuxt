@@ -1,10 +1,21 @@
+<script setup>
+import { useImageStore } from "@/store/index";
+const imageStore = useImageStore();
+defineProps({
+  images: {
+    type: Array,
+    required: true,
+  },
+});
+</script>
+
 <template>
   <div class="grid grid-cols-4 gap-4">
-    <div v-for="(el, index) in 20">
+    <div v-for="item in images">
       <NuxtImg
-        src="/logo.png"
-        :key="el"
-        @click="() => console.log('clicked', index)"
+        :src="item.urls.small"
+        :key="item.id"
+        @click="imageStore.openModal(item)"
       />
     </div>
   </div>

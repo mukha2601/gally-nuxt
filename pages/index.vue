@@ -4,6 +4,7 @@ const imageStore = useImageStore();
 </script>
 
 <template>
-  <div>Main</div>
-  <Grid />
+  <Modal />
+  <Grid :images="imageStore.images" />
+  <UButton @click="imageStore." class="p-4 border-2">Show More</UButton>
 </template>
