@@ -11,9 +11,9 @@ export const useImageStore = defineStore("images", {
     };
   },
   actions: {
-    openModal() {
+    openModal(event) {
       this.isOpen = true;
-      this.selectedItem = null;
+      this.selectedItem = event;
     },
     closeModal() {
       this.isOpen = false;
