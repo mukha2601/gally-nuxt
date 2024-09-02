@@ -8,6 +8,7 @@ export const useImageStore = defineStore("images", {
       isOpen: false,
       page: 1,
       query: "",
+      client_id:"coqmge2ykQgYjS7v1EqICeFAOZNxpAFi6x34bOOms4g"
     };
   },
   actions: {
@@ -22,7 +23,7 @@ export const useImageStore = defineStore("images", {
     showMore() {
       this.page++;
       fetch(
-        `https://api.unsplash.com/photos/?page=${this.page}&query=${this.query}&count=30&client_id=5L7IgPO9W3WngJMhAa31bAes8r0gRoijpKnukBk2VHk`
+        `https://api.unsplash.com/photos/?page=${this.page}&query=${this.query}&count=30&client_id=${this.client_id}`
       )
         .then((response) => response.json())
         .then((items) => {
@@ -42,7 +43,7 @@ export const useImageStore = defineStore("images", {
     },
     searchResult() {
       fetch(
-        `https://api.unsplash.com/search/photos/?page=${this.page}&query=${this.query}&per_page=30&client_id=5L7IgPO9W3WngJMhAa31bAes8r0gRoijpKnukBk2VHk`
+        `https://api.unsplash.com/search/photos/?page=${this.page}&query=${this.query}&per_page=30&client_id=${this.client_id}`
       )
         .then((response) => response.json())
         .then((items) => {

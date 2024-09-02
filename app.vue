@@ -13,7 +13,7 @@ const imageStore = useImageStore();
 
 onMounted(() => {
   fetch(
-    `https://api.unsplash.com/photos/random/?page=${imageStore.page}&count=30&client_id=5L7IgPO9W3WngJMhAa31bAes8r0gRoijpKnukBk2VHk`
+    `https://api.unsplash.com/photos/random/?page=${imageStore.page}&count=30&client_id=${imageStore.client_id}`
   )
     .then((response) => response.json())
     .then((items) => {
