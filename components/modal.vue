@@ -1,27 +1,23 @@
 <template>
-    <UModal
-      v-model="imageStore.isOpen"
-      :close="imageStore.closeModal"
-      :ui="{
-        overlay: {
-          background: 'dark:bg-gray-800/95',
-        },
-      }"
-    >
-      <NuxtImg
-        :src="imageStore.selectedImage.urls.small"
-        class="h-[80vh] w-auto object-cover"
-      />
-      <div class=""></div>
-    </UModal>
+
+  <teleport to="body" v-if="imageStore.isOpen">
+    <div
+      class="modal-box flex justify-center items-center fixed inset-0 bg-black/50 backdrop-blur-lg z-10"
+      @click="imageStore.closeModal"
+      >
+      <div
+      class="modal flex flex-col justify-center gap-4 h-[80%] max-w-[90%] relative"
+      >
+        <NuxtImg
+          :src="imageStore.selectedImage.urls.regular"
+          class="max-w-full max-h-full"
+        />
+      </div>
+    </div>
+  </teleport>
 </template>
 
 <script setup>
 import { useImageStore } from "@/store/index";
 const imageStore = useImageStore();
 </script>
-<style scoped>
-.custom-modal-height {
-  height: 80%;
-}
-</style>

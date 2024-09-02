@@ -1,6 +1,5 @@
 <template>
-  <div class="max-w-[1500px] mx-auto p-2 md:p-3 lg:p-4">
-    <UModals/>
+  <div class="app max-w-[1500px] mx-auto p-2 md:p-3 lg:p-4">
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>

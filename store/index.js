@@ -18,10 +18,12 @@ export const useImageStore = defineStore("images", {
     openModal(event) {
       this.isOpen = true;
       this.selectedImage = event;
+      document.body.style.overflow = 'hidden';
     },
     closeModal() {
       this.isOpen = false;
       this.selectedImage = [];
+      document.body.style.overflow = '';
     },
     showMoreMain() {
       this.mainPage++;
