@@ -11,7 +11,7 @@ export const useImageStore = defineStore("images", {
       resultPage: 1,
       query: "",
       loading: false,
-      client_id: "coqmge2ykQgYjS7v1EqICeFAOZNxpAFi6x34bOOms4g",
+      client_id: "5L7IgPO9W3WngJMhAa31bAes8r0gRoijpKnukBk2VHk",
     };
   },
   actions: {
@@ -24,7 +24,7 @@ export const useImageStore = defineStore("images", {
       this.selectedImage = [];
     },
     showMoreMain() {
-      this.page++;
+      this.mainPage++;
       fetch(
         `https://api.unsplash.com/photos/random/?page=${this.mainPage}&count=30&client_id=${this.client_id}`
       )
@@ -45,14 +45,17 @@ export const useImageStore = defineStore("images", {
         });
     },
     showMoreResult() {
-      this.page++;
+      this.resultPage++;
       fetch(
-        `https://api.unsplash.com/search/photos/?page=${this.mainPage}&per_page=30&client_id=${this.client_id}`
+        `https://api.unsplash.com/search/photos/?page=${this.resultPage}&query=${this.query}&per_page=30&client_id=${this.client_id}`
       )
         .then((response) => response.json())
         .then((items) => {
+          console.log(items);
+          
           // Har bir elementni qo'shamiz
-          items.forEach((item) => {
+          items?.results
+          .map((item) => {
             this.resultImages.push({
               id: item.id,
               alt_description: item.alt_description,

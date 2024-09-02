@@ -1,9 +1,9 @@
 <template>
-  <div class="max-w-[1500px] mx-auto p-4">
+  <div class="max-w-[1500px] mx-auto p-2 md:p-3 lg:p-4">
+    <UModals/>
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
-    <UModals />
   </div>
 </template>
 

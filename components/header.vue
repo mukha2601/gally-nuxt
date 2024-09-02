@@ -21,20 +21,34 @@ const router = useRouter();
 
 function navigate() {
   console.log(router);
-  
+
+  if (imageStore.query === "" || imageStore.resultImages.length === 0) {
+    router.push("/");
+  }
+
   router.push("/result");
   fetch(
-    `https://api.unsplash.com/search/photos/?page=${imageStore.resultPage}&query=${imageStore.query}&per_page=30&client_id=${imageStore.client_id}`
+    `https://api.unsplash.com/search/photos/?page=${
+      imageStore.resultPage
+    }&query=${imageStore.query.trim()}&per_page=30&client_id=${
+      imageStore.client_id
+    }`
   )
     .then((response) => response.json())
     .then((items) => {
-      console.log(items);
-      imageStore.resultImages = items?.results?.map((item) => ({
-        id: item.id,
-        alt_description: item.alt_description,
-        links: item.links,
-        urls: item.urls,
-      }));
+      if (items.results && items.results.length > 0) {
+        imageStore.resultImages = items.results.map((item) => ({
+          id: item.id,
+          alt_description: item.alt_description,
+          links: item.links,
+          urls: item.urls,
+        }));
+      } else {
+        console.log("No results found");
+      }
+    })
+    .catch((error) => {
+      console.error("Error fetching data:", error);
     });
 }
 </script>

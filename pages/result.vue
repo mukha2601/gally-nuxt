@@ -1,6 +1,8 @@
 <script setup>
 import { useImageStore } from "@/store/index";
 const imageStore = useImageStore();
+// import { useRouter } from "vue-router";
+// const router = useRouter();
 </script>
 
 <template>
