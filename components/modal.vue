@@ -1,5 +1,5 @@
 <template>
-  <UModal v-model="imageStore.isOpen">
+  <UModal v-model="imageStore.isOpen" :close="imageStore.closeModal">
     <div class="p-4">
       <NuxtImg :src="imageStore.selectedImage.urls.regular" />
     </div>

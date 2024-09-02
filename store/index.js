@@ -13,11 +13,11 @@ export const useImageStore = defineStore("images", {
   actions: {
     openModal(event) {
       this.isOpen = true;
-      this.selectedItem = event;
+      this.selectedImage = event;
     },
     closeModal() {
       this.isOpen = false;
-      this.selectedItem = null;
+      this.selectedImage = [];
     },
     showMore() {
       this.page++;
@@ -42,17 +42,18 @@ export const useImageStore = defineStore("images", {
     },
     searchResult() {
       fetch(
-        `https://api.unsplash.com/photos/?page=${this.page}&query=${this.query}&count=30&client_id=5L7IgPO9W3WngJMhAa31bAes8r0gRoijpKnukBk2VHk`
+        `https://api.unsplash.com/search/photos/?page=${this.page}&query=${this.query}&per_page=30&client_id=5L7IgPO9W3WngJMhAa31bAes8r0gRoijpKnukBk2VHk`
       )
         .then((response) => response.json())
         .then((items) => {
           console.log(items);
-          this.images = items?.map((item) => ({
+          this.images = items?.results?.map((item) => ({
             id: item.id,
             alt_description: item.alt_description,
             links: item.links,
             urls: item.urls,
           }));
+          this.query = "";
         });
     },
   },
