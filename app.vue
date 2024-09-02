@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-[1500px] mx-auto">
+  <div class="max-w-[1500px] mx-auto p-4">
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
@@ -13,12 +13,12 @@ const imageStore = useImageStore();
 
 onMounted(() => {
   fetch(
-    `https://api.unsplash.com/photos/random/?page=${imageStore.page}&count=30&client_id=${imageStore.client_id}`
+    `https://api.unsplash.com/photos/random/?page=${imageStore.mainPage}&count=30&client_id=${imageStore.client_id}`
   )
     .then((response) => response.json())
     .then((items) => {
       console.log(items);
-      imageStore.images = items?.map((item) => ({
+      imageStore.mainImages = items?.map((item) => ({
         id: item.id,
         alt_description: item.alt_description,
         links: item.links,
