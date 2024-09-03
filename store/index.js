@@ -69,20 +69,7 @@ export const useImageStore = defineStore("images", {
           console.error("Error fetching images:", error);
         });
     },
-    // searchResult() {
-    //   fetch(
-    //     `https://api.unsplash.com/search/photos/?page=${this.page}&query=${this.query}&per_page=30&client_id=${this.client_id}`
-    //   )
-    //     .then((response) => response.json())
-    //     .then((items) => {
-    //       console.log(items);
-    //       this.images = items?.results?.map((item) => ({
-    //         id: item.id,
-    //         alt_description: item.alt_description,
-    //         links: item.links,
-    //         urls: item.urls,
-    //       }));
-    //     });
-    // },
+
+    
   },
 });

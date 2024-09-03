@@ -3,6 +3,16 @@ import { useImageStore } from "@/store/index";
 const imageStore = useImageStore();
 // import { useRouter } from "vue-router";
 // const router = useRouter();
+
+definePageMeta({
+  middleware: 'redirect-if-empty'
+});
+
+// onMounted(() => {
+//   if (imageStore.resultImages.length == 0) {
+//     router.push('/')
+//   }
+// })
 </script>
 
 <template>
@@ -12,7 +22,7 @@ const imageStore = useImageStore();
     <div class="w-full flex justify-center">
       <Button
         icon="material-symbols:keyboard-arrow-down"
-        @click="imageStore.showMoreMain()"
+        @click="imageStore.showMoreResult()"
       />
     </div>
   </div>
