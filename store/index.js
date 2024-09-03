@@ -53,8 +53,6 @@ export const useImageStore = defineStore("images", {
       )
         .then((response) => response.json())
         .then((items) => {
-          console.log(items);
-
           // Har bir elementni qo'shamiz
           items?.results.map((item) => {
             this.resultImages.push({
@@ -70,5 +68,4 @@ export const useImageStore = defineStore("images", {
         });
     },
   },
-
 });

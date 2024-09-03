@@ -28,9 +28,9 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 
 async function navigate() {
-  if (imageStore.query === "" || imageStore.resultImages.length <= 0) {
-    router.push("/");
-  }
+  // if (imageStore.query === "" || imageStore.resultImages.length <= 0) {
+  //   router.push("/");
+  // }
 
   router.push("/result");
   try {
