@@ -8,10 +8,10 @@ const imageStore = useImageStore();
   <div class="flex flex-col gap-4">
     <Grid :images="imageStore.mainImages" />
     <div class="w-full flex justify-center">
-      <!-- <UButton @click="imageStore.showMoreMain()" class="p-4 border-2 "
-        >Show More</UButton
-      > -->
-      <Button icon="material-symbols:keyboard-arrow-down" />
+      <Button
+        icon="material-symbols:keyboard-arrow-down"
+        @click="imageStore.showMoreMain()"
+      />
     </div>
   </div>
 </template>

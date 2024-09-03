@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#f5f5f5] border-2 border-gray-500 p-2 flex justify-between sticky top-0">
+  <div class=" backdrop-blur-lg p-2 flex justify-between sticky top-0">
     <div class="sm:border-e-2 border-gray-500  pe-2">
       <NuxtImg src="/logo.png" width="40" densities="x1" />
     </div>
@@ -8,7 +8,7 @@
       placeholder="search"
         v-model="imageStore.query"
         @keyup.enter="navigate"
-        class="w-full px-4 border-2 h-full text-black  rounded-none bg-[rgba(255,255,255,0.326)]"
+        class="w-full px-4 border-2  h-full text-black  rounded-none bg-[rgba(255,255,255,0.326)]"
       />
       <Button icon="material-symbols:search" class="max-sm:hidden"/>
     </div>
