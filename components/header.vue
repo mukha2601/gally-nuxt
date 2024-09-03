@@ -1,13 +1,14 @@
 <template>
-  <div class="bg-red-500 p-2 flex justify-between sticky top-0">
-    <NuxtImg src="/logo.png" width="40" densities="x1" />
-    <div class="search w-[300px] border-2">
-      <UInput
-        color="white"
-        variant="outline"
-        placeholder="Search..."
+  <div class="bg-[#f5f5f5] border-2 border-gray-500 p-2 flex justify-between sticky top-0">
+    <div class="border-e-2 border-gray-500   pe-2">
+      <NuxtImg src="/logo.png" width="40" densities="x1" />
+    </div>
+    <div class="search w-[300px] border-s-2 border-gray-500 ps-2 flex items-center">
+      <input
+      placeholder="search"
         v-model="imageStore.query"
         @keyup.enter="navigate"
+        class="w-full px-4 border-2 h-full text-black  rounded-none bg-[rgba(255,255,255,0.326)]"
       />
     </div>
   </div>
