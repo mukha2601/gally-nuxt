@@ -10,7 +10,7 @@ export const useImageStore = defineStore("images", {
       mainPage: 1,
       resultPage: 1,
       query: "",
-      loading: false,
+      // loading: false,
       client_id: "coqmge2ykQgYjS7v1EqICeFAOZNxpAFi6x34bOOms4g",
     };
   },
@@ -69,7 +69,6 @@ export const useImageStore = defineStore("images", {
           console.error("Error fetching images:", error);
         });
     },
-
-    
   },
+
 });

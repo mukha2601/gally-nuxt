@@ -9,6 +9,7 @@ const imageStore = useImageStore();
     <Grid :images="imageStore.mainImages" />
     <div class="w-full flex justify-center">
       <Button
+        v-if="imageStore.mainImages.length"
         icon="material-symbols:keyboard-arrow-down"
         @click="imageStore.showMoreMain()"
       />

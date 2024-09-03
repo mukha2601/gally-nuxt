@@ -1,15 +1,29 @@
+<script setup>
+import { useImageStore } from "@/store/index";
+const imageStore = useImageStore();
+const loading = ref(true);
+console.log(loading.value);
+
+const onImageLoad = () => {
+  console.log("Image loaded");
+  loading.value = false;
+};
+</script>
+
 <template>
   <teleport to="body" v-if="imageStore.isOpen">
     <div
-      class="modal-box flex justify-center items-center fixed inset-0 bg-black/50 backdrop-blur-lg"
+      class="modal-box flex justify-center items-center fixed inset-0 bg-black/50 backdrop-blur-lg z-20"
       @click="imageStore.closeModal"
     >
+    <Loading v-if="loading" />
       <div
         class="modal flex flex-col justify-center gap-4 h-[80%] max-w-[90%] relative"
       >
         <NuxtImg
           :src="imageStore.selectedImage.urls.regular"
           class="max-w-full max-h-full"
+          @load="onImageLoad"
         />
         <div class="flex justify-end gap-2">
           <Button icon="ic:sharp-arrow-downward" />
@@ -20,7 +34,4 @@
   </teleport>
 </template>
 
-<script setup>
-import { useImageStore } from "@/store/index";
-const imageStore = useImageStore();
-</script>
+
