@@ -11,19 +11,19 @@ export const useImageStore = defineStore("images", {
       resultPage: 1,
       query: "",
       loading: false,
-      client_id: "5L7IgPO9W3WngJMhAa31bAes8r0gRoijpKnukBk2VHk",
+      client_id: "coqmge2ykQgYjS7v1EqICeFAOZNxpAFi6x34bOOms4g",
     };
   },
   actions: {
     openModal(event) {
       this.isOpen = true;
       this.selectedImage = event;
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     },
     closeModal() {
       this.isOpen = false;
       this.selectedImage = [];
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     },
     showMoreMain() {
       this.mainPage++;
@@ -54,10 +54,9 @@ export const useImageStore = defineStore("images", {
         .then((response) => response.json())
         .then((items) => {
           console.log(items);
-          
+
           // Har bir elementni qo'shamiz
-          items?.results
-          .map((item) => {
+          items?.results.map((item) => {
             this.resultImages.push({
               id: item.id,
               alt_description: item.alt_description,

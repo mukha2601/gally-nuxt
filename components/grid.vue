@@ -18,7 +18,7 @@ defineProps({
         :src="item.urls.small"
         :key="item.id"
         @click="imageStore.openModal(item)"
-        class="w-full h-full object-cover hover:border-2"
+        class="w-full h-full object-cover hover:border-2 border-black"
       />
     </div>
   </div>
