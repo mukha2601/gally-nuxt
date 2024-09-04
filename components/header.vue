@@ -1,7 +1,7 @@
 <template>
   <div class="bg-white p-2 flex justify-between sticky top-0 z-10">
     <div class="sm:border-e-2 border-gray-500 pe-2">
-      <NuxtImg src="/logo.png" width="40" densities="x1" />
+      <NuxtImg src="/logo.png" width="40" densities="x4" />
     </div>
     <div
       class="search w-[300px] border-s-2 border-gray-500 ps-2 flex items-center"
@@ -28,10 +28,6 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 
 async function navigate() {
-  // if (imageStore.query === "" || imageStore.resultImages.length <= 0) {
-  //   router.push("/");
-  // }
-
   router.push("/result");
   try {
     const response = await fetch(

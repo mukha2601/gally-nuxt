@@ -26,6 +26,28 @@ onBeforeMount(() => {
       }));
     });
 });
+
+useHead({
+  title: "Gally",
+  meta: [
+    { charset: "utf-8" },
+    { name: "viewport", content: "width=device-width, initial-scale=1" },
+    {
+      content:
+        "Bu saytda siz o'zingiz uchun avtor tomonidan huquqga ega bo'lmagan fotosuratlarni topishingiz mumkin",
+    },
+  ],
+  link: [{ rel: "icon", type: "image/x-icon", href: "/logo.ico" }],
+});
+
+useSeoMeta({
+  ogTitle: "Gally",
+  ogDescription:
+    "Bu saytda siz o'zingiz uchun avtor tomonidan huquqga ega bo'lmagan fotosuratlarni topishingiz mumkin",
+  ogImage: "https://www.gally.uz/logo.ico",
+  ogUrl: "https://www.gally.uz/",
+  ogType: "website",
+});
 </script>
 
 <style>

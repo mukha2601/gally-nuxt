@@ -16,6 +16,7 @@ export const useImageStore = defineStore("images", {
   },
   actions: {
     openModal(event) {
+      // this.loading = true
       this.isOpen = true;
       this.selectedImage = event;
       document.body.style.overflow = "hidden";

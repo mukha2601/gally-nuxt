@@ -16,17 +16,18 @@ function downImg(imgUrl) {
 </script>
 
 <template>
+  <!-- <Loading v-if="imageStore.loading" /> -->
   <teleport to="body" v-if="imageStore.isOpen">
     <div
       class="modal-box flex justify-center items-center fixed inset-0 bg-black/50 backdrop-blur-lg z-20"
     >
-      <Loading v-if="imageStore.loading" />
       <div
         class="modal flex flex-col justify-center gap-4 h-[80%] max-w-[90%] relative"
       >
         <NuxtImg
           :src="imageStore.selectedImage.urls.regular"
           class="max-w-full max-h-full"
+          @load="imageStore.loading = false"
         />
         <div class="flex justify-end gap-2">
           <Button
