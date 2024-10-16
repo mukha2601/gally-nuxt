@@ -1,17 +1,25 @@
 <script setup>
 import { useImageStore } from "@/store/index";
-const imageStore = useImageStore();
+import { computed, onMounted } from "vue";
+const store = useImageStore();
+
+const imgData = computed(() => store.images);
+
+onMounted(() => {
+  store.fetchImages();
+});
 </script>
 
 <template>
   <Modal />
-  <div class="flex flex-col gap-4">
-    <Grid :images="imageStore.mainImages" />
+  <div class="flex flex-col gap-2">
+    <Grid v-if="imgData.length" :images="imgData" />
+    <Loading v-if="store.loading" class="text-black" />
     <div class="w-full flex justify-center">
       <Button
-        v-if="imageStore.mainImages.length"
-        icon="material-symbols:keyboard-arrow-down"
-        @click="imageStore.showMoreMain()"
+        v-if="imgData.length"
+        icon="ic:sharp-arrow-downward"
+        @click="store.moreImages"
       />
     </div>
   </div>

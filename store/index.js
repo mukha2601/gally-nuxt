@@ -3,69 +3,90 @@ import { defineStore } from "pinia";
 export const useImageStore = defineStore("images", {
   state: () => {
     return {
-      mainImages: [],
-      resultImages: [],
+      images: [],
       selectedImage: null,
       isOpen: false,
-      mainPage: 1,
-      resultPage: 1,
+      page: 1,
       query: "",
-      // loading: false,
+      loading: false,
       client_id: "coqmge2ykQgYjS7v1EqICeFAOZNxpAFi6x34bOOms4g",
     };
   },
   actions: {
     openModal(event) {
-      // this.loading = true
+      this.loading = true;
       this.isOpen = true;
       this.selectedImage = event;
       document.body.style.overflow = "hidden";
     },
     closeModal() {
+      this.loading = false;
       this.isOpen = false;
       this.selectedImage = [];
       document.body.style.overflow = "";
     },
-    showMoreMain() {
-      this.mainPage++;
+    fetchImages() {
+      this.loading = true;
       fetch(
-        `https://api.unsplash.com/photos/random/?page=${this.mainPage}&count=30&client_id=${this.client_id}`
+        this.query.length > 0
+          ? `https://api.unsplash.com/search/photos/?page=${this.page}&query=${this.query}&per_page=30&client_id=${this.client_id}`
+          : `https://api.unsplash.com/photos/random/?page=${this.page}&count=30&client_id=${this.client_id}`
       )
         .then((response) => response.json())
         .then((items) => {
-          // Har bir elementni qo'shamiz
-          items.forEach((item) => {
-            this.mainImages.push({
+          console.log(items);
+
+          if (this.query.length > 0) {
+            this.images = items.results.map((item) => ({
               id: item.id,
               alt_description: item.alt_description,
               links: item.links,
               urls: item.urls,
-            });
-          });
+            }));
+          }
+          this.images = items.map((item) => ({
+            id: item.id,
+            alt_description: item.alt_description,
+            links: item.links,
+            urls: item.urls,
+          }));
         })
         .catch((error) => {
           console.error("Error fetching images:", error);
+        })
+        .finally(() => {
+          this.loading = false;
         });
     },
-    showMoreResult() {
-      this.resultPage++;
+    moreImages() {
       fetch(
-        `https://api.unsplash.com/search/photos/?page=${this.resultPage}&query=${this.query}&per_page=30&client_id=${this.client_id}`
+        this.query.length > 0
+          ? `https://api.unsplash.com/search/photos/?page=${this.page}&query=${this.query}&per_page=30&client_id=${this.client_id}`
+          : `https://api.unsplash.com/photos/random/?page=${this.page}&count=30&client_id=${this.client_id}`
       )
         .then((response) => response.json())
         .then((items) => {
-          // Har bir elementni qo'shamiz
-          items?.results.map((item) => {
-            this.resultImages.push({
-              id: item.id,
-              alt_description: item.alt_description,
-              links: item.links,
-              urls: item.urls,
+          console.log(items);
+
+          if (this.query.length > 0) {
+            items?.results?.map((item) => {
+              this.images.push({
+                id: item.id,
+                alt_description: item.alt_description,
+                links: item.links,
+                urls: item.urls,
+              });
             });
-          });
-        })
-        .catch((error) => {
-          console.error("Error fetching images:", error);
+          } else {
+            items?.map((item) => {
+              this.images.push({
+                id: item.id,
+                alt_description: item.alt_description,
+                links: item.links,
+                urls: item.urls,
+              });
+            });
+          }
         });
     },
   },
