@@ -9,7 +9,9 @@ export const useImageStore = defineStore("images", {
       page: 1,
       query: "",
       loading: false,
-      client_id: "coqmge2ykQgYjS7v1EqICeFAOZNxpAFi6x34bOOms4g",
+      modalLoading: false,
+      isDisable: false,
+      client_id: "QaxOLYJFNjV5katlAPBXlpedw2R2Ovti2SKbFZEI4RU",
     };
   },
   actions: {
@@ -59,6 +61,7 @@ export const useImageStore = defineStore("images", {
         });
     },
     moreImages() {
+      this.page++;
       fetch(
         this.query.length > 0
           ? `https://api.unsplash.com/search/photos/?page=${this.page}&query=${this.query}&per_page=30&client_id=${this.client_id}`
@@ -87,6 +90,24 @@ export const useImageStore = defineStore("images", {
               });
             });
           }
+        });
+    },
+    downImg() {
+      const imgUrl = this.selectedImage.urls.full;
+      this.modalLoading = true;
+      this.isDisable = true;
+      fetch(imgUrl)
+        .then((res) => res.blob())
+        .then((blob) => {
+          const a = document.createElement("a");
+          a.href = URL.createObjectURL(blob);
+          a.download = new Date().getTime();
+          a.click();
+        })
+        .catch(() => alert("Failed to download image!"))
+        .finally(() => {
+          this.modalLoading = false;
+          this.isDisable = false;
         });
     },
   },

@@ -1,7 +1,6 @@
 <script setup>
 import { useImageStore } from "@/store/index";
 const store = useImageStore();
-// const loading = ref(false);
 
 const props = defineProps({
   images: {
@@ -10,10 +9,6 @@ const props = defineProps({
     default: () => [],
   },
 });
-
-// onMounted(() => {
-//   loading.value = true;
-// });
 </script>
 
 <template>

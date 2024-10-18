@@ -12,7 +12,7 @@ onMounted(() => {
 
 <template>
   <Modal />
-  <div class="flex flex-col gap-2">
+  <main class="flex flex-col gap-2">
     <Grid v-if="imgData.length" :images="imgData" />
     <Loading v-if="store.loading" class="text-black" />
     <div class="w-full flex justify-center">
@@ -22,5 +22,5 @@ onMounted(() => {
         @click="store.moreImages"
       />
     </div>
-  </div>
+  </main>
 </template>

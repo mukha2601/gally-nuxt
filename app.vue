@@ -10,24 +10,6 @@
 </template>
 
 <script setup>
-import { useImageStore } from "@/store/index";
-
-// onBeforeMount(() => {
-//   const imageStore = useImageStore();
-//   fetch(
-//     `https://api.unsplash.com/photos/random/?page=${imageStore.mainPage}&count=30&client_id=${imageStore.client_id}`
-//   )
-//     .then((response) => response.json())
-//     .then((items) => {
-//       imageStore.mainImages = items?.map((item) => ({
-//         id: item.id,
-//         alt_description: item.alt_description,
-//         links: item.links,
-//         urls: item.urls,
-//       }));
-//     });
-// });
-
 useHead({
   title: "Gally",
   meta: [
@@ -39,6 +21,15 @@ useHead({
       content:
         "Bu saytda siz o'zingiz uchun avtor tomonidan huquqga ega bo'lmagan fotosuratlarni topishingiz mumkin",
     },
+    // Twitter meta teglar
+    { name: "twitter:card", content: "./public/logo.png" },
+    { name: "twitter:title", content: "Gally" },
+    {
+      name: "twitter:description",
+      content:
+        "Bu saytda siz o'zingiz uchun avtor tomonidan huquqga ega bo'lmagan fotosuratlarni topishingiz mumkin",
+    },
+    { name: "twitter:image", content: "./public/logo.png" },
   ],
   link: [{ rel: "icon", type: "image/x-icon", href: "/logo.ico" }],
 });
@@ -56,6 +47,7 @@ useSeoMeta({
 <style>
 body {
   background-color: #f1f1f1;
+  scroll-behavior: smooth;
 }
 ::-webkit-scrollbar {
   width: 0.4rem;

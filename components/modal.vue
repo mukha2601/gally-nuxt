@@ -1,26 +1,6 @@
 <script setup>
 import { useImageStore } from "@/store/index";
 const store = useImageStore();
-const loading = ref(false);
-const isDisable = ref(false);
-
-function downImg(imgUrl) {
-  loading.value = true;
-  isDisable.value = true;
-  fetch(imgUrl)
-    .then((res) => res.blob())
-    .then((blob) => {
-      const a = document.createElement("a");
-      a.href = URL.createObjectURL(blob);
-      a.download = new Date().getTime();
-      a.click();
-    })
-    .catch(() => alert("Failed to download image!"))
-    .finally(() => {
-      loading.value = false;
-      isDisable.value = false;
-    });
-}
 </script>
 
 <template>
@@ -33,21 +13,22 @@ function downImg(imgUrl) {
       >
         <Loading v-if="store.loading" class="absolute text-white" />
         <NuxtImg
-        densities="1x 2x"
+          densities="1x 2x"
           loading="lazy"
+          :alt="store.selectedImage.alt_description"
           :src="store.selectedImage.urls.regular"
           class="min-w-60 min-h-60 max-w-full max-h-full object-cover"
           @load="store.loading = false"
         />
         <div class="flex gap-2 justify-center sticky">
           <Button
-            :disabled="isDisable"
+            :disabled="store.isDisable"
             :icon="
-              loading
+              store.modalLoading
                 ? 'line-md:loading-twotone-loop'
                 : 'ic:sharp-arrow-downward'
             "
-            @click="downImg(store.selectedImage.urls.full)"
+            @click="store.downImg()"
           />
           <Button icon="ic:sharp-close" @click="store.closeModal" />
         </div>
