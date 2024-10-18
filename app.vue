@@ -19,7 +19,7 @@ useHead({
     {
       name: "description",
       content:
-        "Bu saytda siz o'zingiz uchun avtor tomonidan huquqga ega bo'lmagan fotosuratlarni topishingiz mumkin",
+        "Bu saytda siz o'zingiz uchun avtor tomonidan huquqga ega bo'lmagan fotosuratlarni topishingiz va yuklab olishingiz mumkin",
     },
     // Twitter meta teglar
     { name: "twitter:card", content: "./public/logo.png" },

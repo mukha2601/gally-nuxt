@@ -12,11 +12,11 @@ const props = defineProps({
 </script>
 
 <template>
-  <div
+  <article
     class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 auto-rows-[10rem] sm:auto-rows-[14rem] mt-2 md:mt-3 lg:mt-4 gap-2 relative"
   >
     <!-- <Loading v-if="loading" /> -->
-    <div
+    <figure
       v-for="(item, index) in images"
       :key="item.id"
       class="overflow-hidden relative"
@@ -30,6 +30,6 @@ const props = defineProps({
         @load="loading = false"
         class="w-full h-full object-cover hover:border-2 border-black"
       />
-    </div>
-  </div>
+    </figure>
+  </article>
 </template>

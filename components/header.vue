@@ -10,6 +10,7 @@
       class="search w-[300px] border-s-2 border-gray-500 ps-2 flex items-center"
     >
       <input
+      type="search"
         placeholder="search"
         v-model="store.query"
         @keyup.enter="navigate"
