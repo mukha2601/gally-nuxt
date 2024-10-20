@@ -25,9 +25,15 @@ useHead({
     { name: "twitter:card", content: "./public/logo.png" },
     { name: "twitter:title", content: "Gally" },
     {
+      name: "keywords",
+      content:
+        "bepul fotosuratlar, royxatsiz rasmlar yuklash, avtor huquqiga ega bo'lmagan rasmlar, Creative Commons rasmlar, erkin foydalanish fotosuratlari, public domain photos, free images, royalty-free photos, free stock images, no copyright photos, free image download, public domain images, Creative Commons photos",
+    },
+
+    {
       name: "twitter:description",
       content:
-        "Bu saytda siz o'zingiz uchun avtor tomonidan huquqga ega bo'lmagan fotosuratlarni topishingiz mumkin",
+        "Bu saytda siz o'zingiz uchun avtor tomonidan huquqga ega bo'lmagan fotosuratlarni topishingiz va yuklab olishingiz mumkin",
     },
     { name: "twitter:image", content: "./public/logo.png" },
   ],
@@ -46,7 +52,6 @@ useSeoMeta({
 
 <style>
 body {
-  background-color: #f1f1f1;
   scroll-behavior: smooth;
 }
 ::-webkit-scrollbar {
@@ -55,6 +60,6 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgb(167, 167, 167);
+  background-color: rgb(167, 167, 167);
 }
 </style>
