@@ -1,7 +1,7 @@
 <template>
   <header
-    class="p-2 flex justify-between sticky top-0 z-10"
     :class="[
+      'p-2 flex justify-between sticky top-0 z-10',
       colorMode.preference === 'dark'
         ? 'bg-[#1E201E] text-black'
         : 'text-white bg-[#F6F5F2]',
@@ -22,25 +22,36 @@
     <div
       class="search min-w-[150px] border-s-2 border-gray-500 ps-2 flex items-center"
     >
-      <Button
-        @click="
-          colorMode.preference =
-            colorMode.preference === 'dark' ? 'light' : 'dark'
-        "
-        icon="material-symbols:dark-mode-outline"
-        class="me-2"
-      />
-      <Button
-        icon="material-symbols:search"
-        class="max-sm:hidden"
-        @click="navigate"
-      />
       <input
         type="search"
         placeholder="search"
         v-model="store.query"
         @keyup.enter="navigate"
         class="min-w-[150px] w-full px-4 border-2 outline-none h-full text-black rounded-none bg-[rgba(255,255,255,0.326)]"
+      />
+      <Button
+        icon="material-symbols:search"
+        class="max-sm:hidden"
+        @click="navigate"
+      />
+      <Button
+        @click="
+          colorMode.preference =
+            colorMode.preference === 'dark' ? 'light' : 'dark'
+        "
+        icon="material-symbols:dark-mode-outline"
+        class="mx-2"
+      />
+
+      <Button
+        icon="tabler:heart-down"
+        class="max-sm:hidden"
+        @click="navigate"
+      />
+      <Button
+        icon="mingcute:user-1-line"
+        class="max-sm:hidden ms-2"
+        @click="navigate"
       />
     </div>
   </header>
