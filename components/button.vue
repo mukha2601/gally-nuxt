@@ -1,6 +1,6 @@
 <template>
   <button
-    class="flex py-2 px-4 items-center justify-center"
+    class="flex py-2 px-2 sm:px-4 items-center justify-center"
     :class="[
       colorMode.preference === 'dark'
         ? 'bg-[#E5E1DA] text-black active:text-white active:bg-black'

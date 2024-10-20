@@ -27,13 +27,9 @@
         placeholder="search"
         v-model="store.query"
         @keyup.enter="navigate"
-        class="min-w-[150px] w-full px-4 border-2 outline-none h-full text-black rounded-none bg-[rgba(255,255,255,0.326)]"
+        class="min-w-[150px] w-full max-sm:hidden px-4 border-2 outline-none h-full text-black rounded-none bg-[rgba(255,255,255,0.326)]"
       />
-      <Button
-        icon="material-symbols:search"
-        class="max-sm:hidden"
-        @click="navigate"
-      />
+      <Button icon="material-symbols:search" @click="navigate" />
       <Button
         @click="
           colorMode.preference =
@@ -43,16 +39,8 @@
         class="mx-2"
       />
 
-      <Button
-        icon="tabler:heart-down"
-        class="max-sm:hidden"
-        @click="navigate"
-      />
-      <Button
-        icon="mingcute:user-1-line"
-        class="max-sm:hidden ms-2"
-        @click="navigate"
-      />
+      <Button icon="tabler:heart-down" @click="navigate" />
+      <Button icon="mingcute:user-1-line" class="ms-2" @click="navigate" />
     </div>
   </header>
 </template>
