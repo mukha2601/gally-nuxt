@@ -36,8 +36,6 @@ export const useImageStore = defineStore("images", {
       )
         .then((response) => response.json())
         .then((items) => {
-          console.log(items);
-
           if (this.query.length > 0) {
             this.images = items.results.map((item) => ({
               id: item.id,

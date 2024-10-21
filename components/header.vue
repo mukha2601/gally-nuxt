@@ -1,11 +1,6 @@
 <template>
   <header
-    :class="[
-      'p-2 flex justify-between sticky top-0 z-10',
-      colorMode.preference === 'dark'
-        ? 'bg-[#1E201E] text-black'
-        : 'text-white bg-[#F6F5F2]',
-    ]"
+    class="p-2 flex justify-between sticky top-0 z-10 dark:bg-[#1E201E] dark:text-black text-white bg-[#F6F5F2]"
   >
     <button
       @click="store.fetchImages"
@@ -31,13 +26,18 @@
       />
       <Button icon="material-symbols:search" @click="navigate" />
       <Button
+        @click="toggleDark()"
+        icon="material-symbols:dark-mode-outline"
+        class="mx-2"
+      />
+      <!-- <Button
         @click="
           colorMode.preference =
             colorMode.preference === 'dark' ? 'light' : 'dark'
         "
         icon="material-symbols:dark-mode-outline"
         class="mx-2"
-      />
+      /> -->
 
       <Button icon="tabler:heart-down" @click="navigate" />
       <Button icon="mingcute:user-1-line" class="ms-2" @click="navigate" />
@@ -48,7 +48,11 @@
 <script setup>
 import { useImageStore } from "@/store/index";
 const store = useImageStore();
-const colorMode = useColorMode();
+// const colorMode = useColorMode();
+import { useDark, useToggle } from "@vueuse/core";
+
+const isDark = useDark();
+const toggleDark = useToggle(isDark);
 
 function navigate() {
   if (store.query.length > 0) {
@@ -56,18 +60,3 @@ function navigate() {
   }
 }
 </script>
-
-<!-- <style>
-  body {
-    background-color: #fff;
-    color: rgba(0, 0, 0, 0.8);
-  }
-  .dark-mode body {
-    background-color: #091a28;
-    color: #ebf4f1;
-  }
-  .sepia-mode body {
-    background-color: #f1e7d0;
-    color: #433422;
-  }
-  </style> -->
