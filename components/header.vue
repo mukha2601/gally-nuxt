@@ -30,14 +30,6 @@
         icon="material-symbols:dark-mode-outline"
         class="mx-2"
       />
-      <!-- <Button
-        @click="
-          colorMode.preference =
-            colorMode.preference === 'dark' ? 'light' : 'dark'
-        "
-        icon="material-symbols:dark-mode-outline"
-        class="mx-2"
-      /> -->
 
       <Button icon="tabler:heart-down" @click="navigate" />
       <Button icon="mingcute:user-1-line" class="ms-2" @click="navigate" />
@@ -47,10 +39,8 @@
 
 <script setup>
 import { useImageStore } from "@/store/index";
-const store = useImageStore();
-// const colorMode = useColorMode();
 import { useDark, useToggle } from "@vueuse/core";
-
+const store = useImageStore();
 const isDark = useDark();
 const toggleDark = useToggle(isDark);
 

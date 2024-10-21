@@ -54,6 +54,7 @@ useSeoMeta({
 body {
   scroll-behavior: smooth;
 }
+
 ::-webkit-scrollbar {
   width: 0.4rem;
   background-color: rgb(75, 75, 75);

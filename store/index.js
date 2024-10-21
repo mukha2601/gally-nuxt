@@ -11,7 +11,6 @@ export const useImageStore = defineStore("images", {
       loading: false,
       modalLoading: false,
       isDisable: false,
-      client_id: "QaxOLYJFNjV5katlAPBXlpedw2R2Ovti2SKbFZEI4RU",
     };
   },
   actions: {
@@ -29,27 +28,31 @@ export const useImageStore = defineStore("images", {
     },
     fetchImages() {
       this.loading = true;
+      const config = useRuntimeConfig();
+      const client_id = config.public.unsplashAccessKey;
+
       fetch(
         this.query.length > 0
-          ? `https://api.unsplash.com/search/photos/?page=${this.page}&query=${this.query}&per_page=30&client_id=${this.client_id}`
-          : `https://api.unsplash.com/photos/random/?page=${this.page}&count=30&client_id=${this.client_id}`
+          ? `https://api.unsplash.com/search/photos/?page=${this.page}&query=${this.query}&per_page=30&client_id=${client_id}`
+          : `https://api.unsplash.com/photos/random/?page=${this.page}&count=30&client_id=${client_id}`
       )
         .then((response) => response.json())
         .then((items) => {
           if (this.query.length > 0) {
-            this.images = items.results.map((item) => ({
+            this.images = items?.results.map((item) => ({
+              id: item.id,
+              alt_description: item.alt_description,
+              links: item.links,
+              urls: item.urls,
+            }));
+          } else {
+            this.images = items?.map((item) => ({
               id: item.id,
               alt_description: item.alt_description,
               links: item.links,
               urls: item.urls,
             }));
           }
-          this.images = items.map((item) => ({
-            id: item.id,
-            alt_description: item.alt_description,
-            links: item.links,
-            urls: item.urls,
-          }));
         })
         .catch((error) => {
           console.error("Error fetching images:", error);
@@ -60,10 +63,14 @@ export const useImageStore = defineStore("images", {
     },
     moreImages() {
       this.page++;
+
+      const config = useRuntimeConfig();
+      const client_id = config.public.unsplashAccessKey;
+
       fetch(
         this.query.length > 0
-          ? `https://api.unsplash.com/search/photos/?page=${this.page}&query=${this.query}&per_page=30&client_id=${this.client_id}`
-          : `https://api.unsplash.com/photos/random/?page=${this.page}&count=30&client_id=${this.client_id}`
+          ? `https://api.unsplash.com/search/photos/?page=${this.page}&query=${this.query}&per_page=30&client_id=${client_id}`
+          : `https://api.unsplash.com/photos/random/?page=${this.page}&count=30&client_id=${client_id}`
       )
         .then((response) => response.json())
         .then((items) => {
