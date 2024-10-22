@@ -12,6 +12,7 @@ onMounted(() => {
 
 <template>
   <Modal />
+  <LikesModal />
   <main class="flex flex-col gap-2">
     <Grid v-if="imgData.length" :images="imgData" />
     <Loading v-if="store.loading" class="text-black" />

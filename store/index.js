@@ -6,6 +6,7 @@ export const useImageStore = defineStore("images", {
       images: [],
       selectedImage: null,
       isOpen: false,
+      isLikesOpen: false,
       page: 1,
       query: "",
       loading: false,

@@ -31,7 +31,18 @@
         class="mx-2"
       />
 
-      <Button icon="tabler:heart-down" @click="navigate" />
+      <!-- <Button icon="tabler:heart-down" @click="store.isLikesOpen = true" /> -->
+      <UPopover overlay>
+        <Button icon="tabler:heart-down" />
+
+        <template #panel>
+          <div class="p-4">
+            <h1 class="text-white h-[80vh]">
+              <LikesCard />
+            </h1>
+          </div>
+        </template>
+      </UPopover>
       <Button icon="mingcute:user-1-line" class="ms-2" @click="navigate" />
     </div>
   </header>
