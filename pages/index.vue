@@ -21,6 +21,7 @@ onMounted(() => {
         v-if="imgData.length"
         icon="ic:sharp-arrow-downward"
         @click="store.moreImages"
+        class="my-3"
       />
     </div>
   </main>

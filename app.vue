@@ -1,12 +1,14 @@
 <template>
-  <div
+  <!-- <div
     id="app"
-    class="app min-h-screen max-w-[1600px] mx-auto p-2 md:p-3 lg:p-4"
-  >
+    class="app min-h-screen max-w-[1600px] relative  p-2 md:p-3 lg:p-4"
+  > -->
+  <UContainer class="p-2 md:p-3 lg:p-4">
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
-  </div>
+  </UContainer>
+  <!-- </div> -->
 </template>
 
 <script setup>

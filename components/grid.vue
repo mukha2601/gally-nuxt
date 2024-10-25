@@ -24,7 +24,7 @@ const addToLikeList = (item) => {
 
 <template>
   <article
-    class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 auto-rows-[10rem] sm:auto-rows-[14rem] mt-2 md:mt-3 lg:mt-4 gap-2 relative"
+    class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 auto-rows-[10rem] sm:auto-rows-[14rem] gap-2 relative"
   >
     <!-- <Loading v-if="loading" /> -->
     <figure
@@ -34,18 +34,18 @@ const addToLikeList = (item) => {
     >
       <NuxtImg
         loading="lazy"
-        densities="1x 2x"
+        densities="1x"
         :src="item.urls.small_s3"
         :alt="item.alt_description"
         @click="store.openModal(item), console.log(item)"
         @load="loading = false"
         class="w-full h-full object-cover hover:border-2 border-black"
       />
-      <Button
+      <!-- <Button
         icon="ic:round-favorite-border"
-        class="absolute bottom-0 right-0"
+        class="absolute bottom-2 right-2 bg-black"
         @click="addToLikeList(item)"
-      />
+      /> -->
     </figure>
   </article>
 </template>
