@@ -11,7 +11,7 @@ const colorMode = useColorMode();
 defineProps({
   icon: {
     type: String,
-    required: false,
+    required: true,
   },
 });
 </script>

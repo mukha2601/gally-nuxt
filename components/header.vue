@@ -2,7 +2,7 @@
   <div class="w-full fixed right-0 flex justify-center top-5 z-10">
     <header
       class="p-1 w-fit shadow-2xl dark:bg-white rounded-full flex justify-between z-10 dark:text-black bg-black text-white"
-      style="box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.5)"
+      style="box-shadow: 0 0 8px 5px rgba(0, 0, 0, 0.5)"
     >
       <!-- <button
       @click="store.fetchImages"
@@ -36,7 +36,7 @@
         />
 
         <!-- <Button icon="tabler:heart-down" @click="store.isLikesOpen = true" /> -->
-        <UPopover overlay>
+        <!-- <UPopover overlay>
           <Button icon="tabler:heart-down" />
 
           <template #panel>
@@ -46,8 +46,9 @@
               </h1>
             </div>
           </template>
-        </UPopover>
-        <Button icon="mingcute:user-1-line" class="ms-2" @click="navigate" />
+        </UPopover> -->
+        <!-- <Button icon="mingcute:user-1-line" class="ms-2" @click="navigate" /> -->
+        <Button icon="material-symbols:refresh" @click="store.fetchImages" />
       </div>
     </header>
   </div>
