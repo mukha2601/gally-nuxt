@@ -1,38 +1,21 @@
 <template>
-  <div
-    class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl"
-  >
-    <div class="md:flex">
-      <div class="md:shrink-0">
-        <!-- <img
-          class="h-48 w-full object-cover md:h-full md:w-48"
-          src="/img/building.jpg"
-          alt="Modern building architecture"
-        /> -->
-      </div>
-      <div class="p-8">
-        <div
-          class="uppercase tracking-wide text-sm text-indigo-500 font-semibold"
-        >
-          Company retreats
-        </div>
-        <a
-          href="#"
-          class="block mt-1 text-lg leading-tight font-medium text-black hover:underline"
-          >Incredible accommodation for your team</a
-        >
-        <p class="mt-2 text-slate-500">
-          Looking to take your team away on a retreat to enjoy awesome food and
-          take in some sunshine? We have a list of places to do just that.
-        </p>
+  <div class="flex mb-4 border-[1px]">
+    <figure class="overflow-hidden w-44 h-32">
+      <NuxtImg :src="item.urls.small_s3" class="w-full h-full object-cover" />
+    </figure>
+    <div class="flex flex-col w-44 justify-between p-2 px-3">
+      <p class="text-sm">{{ item.alt_description }}</p>
+      <div class="flex gap-2">
+        <Button label="remove" class="py-1 rounded-md" />
+        <Button label="download" class="py-1 rounded-md" />
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-const props = defineProps({
-  likeImg: {
+defineProps({
+  item: {
     type: Object,
     required: true,
   },

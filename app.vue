@@ -1,14 +1,10 @@
 <template>
-  <!-- <div
-    id="app"
-    class="app min-h-screen max-w-[1600px] relative  p-2 md:p-3 lg:p-4"
-  > -->
   <UContainer class="p-2 md:p-3 lg:p-4">
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
   </UContainer>
-  <!-- </div> -->
+  <USlideovers />
 </template>
 
 <script setup>
