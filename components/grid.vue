@@ -41,11 +41,11 @@ const addToLikeList = (item) => {
         @load="loading = false"
         class="w-full h-full object-cover hover:border-2 border-black"
       />
-      <!-- <Button
+      <Button
         icon="ic:round-favorite-border"
         class="absolute bottom-2 right-2 bg-black"
         @click="addToLikeList(item)"
-      /> -->
+      />
     </figure>
   </article>
 </template>

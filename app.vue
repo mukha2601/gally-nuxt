@@ -9,6 +9,9 @@
 
 <script setup>
 useHead({
+  htmlAttrs: {
+    lang: "en",
+  },
   title: "Gally",
   meta: [
     { charset: "utf-8" },

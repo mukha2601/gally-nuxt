@@ -4,15 +4,21 @@ const store = useImageStore();
 // items holatini yaratamiz
 const likeList = ref([]);
 
-// Component yuklanganda localStorage'dan ma'lumotlarni o'qish
-onMounted(() => {
-  const localItems = computed(() => localStorage.getItem("likeList"));
-  if (localItems.value) {
-    likeList.value = JSON.parse(localItems.value);
+function getLocalStorageItems() {
+  const localItems = localStorage.getItem("likeList");
+  if (localItems) {
+    likeList.value = JSON.parse(localItems);
   }
+}
+
+// Komponent yuklanayotganda localStorage'dan ma'lumotlarni olish
+onMounted(() => {
+  getLocalStorageItems();
 });
 
-console.log(likeList.value);
+function remove() {
+  getLocalStorageItems();
+}
 </script>
 
 <template>
@@ -31,7 +37,12 @@ console.log(likeList.value);
         </header>
 
         <main class="overflow-auto h-[87vh] p-1">
-          <LikesCard v-if="likeList" v-for="item in likeList" :item="item" />
+          <LikesCard
+            v-if="likeList"
+            v-for="item in likeList"
+            :item="item"
+            @remove="remove"
+          />
         </main>
       </UCard>
     </USlideover>
