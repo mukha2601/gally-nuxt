@@ -7,7 +7,7 @@
       <p class="text-sm">{{ item.alt_description }}</p>
       <div class="flex gap-2">
         <Button
-          @click="removeFromStorage(item.id)"
+          @click="store.removeFromStorage(item.id)"
           label="remove"
           class="py-0 rounded-none"
         />
@@ -18,28 +18,12 @@
 </template>
 
 <script setup>
-import { defineEmits } from "vue";
-
-defineProps({
+import { useImageStore } from "@/store/index";
+const store = useImageStore();
+  defineProps({
   item: {
     type: Object,
     required: true,
   },
 });
-
-const emit = defineEmits(["remove"]);
-
-function removeFromStorage(id) {
-  // localStorage dan ma'lumotlarni olamiz
-  let storedItems = JSON.parse(localStorage.getItem("likeList")) || [];
-
-  // item.id ga teng bo'lmagan itemlarni filter qilamiz
-  storedItems = storedItems.filter((storedItem) => storedItem.id !== id);
-
-  // yangilangan ma'lumotni localStorage ga saqlaymiz
-  localStorage.setItem("likeList", JSON.stringify(storedItems));
-
-  // ota komponentga hodisani yuboramiz
-  emit("remove");
-}
 </script>

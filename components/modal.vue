@@ -22,6 +22,10 @@ const store = useImageStore();
         />
         <div class="flex gap-2 justify-center sticky">
           <Button
+            icon="ic:round-favorite-border"
+            @click="store.addToLikeList(store.selectedImage)"
+          />
+          <Button
             :disabled="store.isDisable"
             :icon="
               store.modalLoading

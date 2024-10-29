@@ -7,6 +7,7 @@ export const useImageStore = defineStore("images", {
       selectedImage: null,
       isOpen: false,
       isLikesOpen: false,
+      likeList: [],
       page: 1,
       query: "",
       loading: false,
@@ -14,6 +15,7 @@ export const useImageStore = defineStore("images", {
       isDisable: false,
     };
   },
+
   actions: {
     openModal(event) {
       this.loading = true;
@@ -115,6 +117,34 @@ export const useImageStore = defineStore("images", {
           this.modalLoading = false;
           this.isDisable = false;
         });
+    },
+    addToLikeList(item) {
+      // Avval localStorage dan mavjud likeList ni olamiz
+      let likeList = JSON.parse(localStorage.getItem("likeList")) || [];
+
+      // Agar element allaqachon mavjud bo'lmasa, uni qo'shamiz
+      if (!likeList.some((el) => el.id === item.id)) {
+        likeList.push(item);
+        localStorage.setItem("likeList", JSON.stringify(likeList));
+      }
+      this.getLocalStorageItems();
+    },
+    removeFromStorage(id) {
+      // localStorage dan ma'lumotlarni olamiz
+      let storedItems = JSON.parse(localStorage.getItem("likeList")) || [];
+
+      // item.id ga teng bo'lmagan itemlarni filter qilamiz
+      storedItems = storedItems.filter((storedItem) => storedItem.id !== id);
+
+      // yangilangan ma'lumotni localStorage ga saqlaymiz
+      localStorage.setItem("likeList", JSON.stringify(storedItems));
+      this.getLocalStorageItems();
+    },
+    getLocalStorageItems() {
+      const localItems = localStorage.getItem("likeList");
+      if (localItems) {
+        this.likeList = JSON.parse(localItems);
+      }
     },
   },
 });

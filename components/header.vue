@@ -35,13 +35,17 @@
           class="mx-2"
         />
 
-        <Button
-          icon="tabler:heart-down"
-          @click="store.isLikesOpen = true"
-          class="me-2"
-        />
+        <div class="relative">
+          <Button
+            icon="tabler:heart-down"
+            @click="store.isLikesOpen = true"
+            class="me-2"
+          />
+          <span v-if="store.likeList.length > 0" class="absolute top-0 right-1 w-5 h-5 bg-red-600 grid place-content-center rounded-full text-xs">{{
+            store.likeList.length
+          }}</span>
+        </div>
 
-        <!-- <Button icon="mingcute:user-1-line" class="ms-2" @click="navigate" /> -->
         <Button icon="material-symbols:refresh" @click="store.fetchImages" />
       </div>
     </header>

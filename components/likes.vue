@@ -1,29 +1,15 @@
-<script setup lang="ts">
+<script setup>
 import { useImageStore } from "@/store/index";
 const store = useImageStore();
-// items holatini yaratamiz
-const likeList = ref([]);
 
-function getLocalStorageItems() {
-  const localItems = localStorage.getItem("likeList");
-  if (localItems) {
-    likeList.value = JSON.parse(localItems);
-  }
-}
-
-// Komponent yuklanayotganda localStorage'dan ma'lumotlarni olish
 onMounted(() => {
-  getLocalStorageItems();
+  store.getLocalStorageItems();
 });
-
-function remove() {
-  getLocalStorageItems();
-}
 </script>
 
 <template>
   <div>
-    <USlideover v-model="store.isLikesOpen" prevent-close>
+    <USlideover v-model="store.isLikesOpen">
       <UCard class="flex flex-col h-screen relative bg-white dark:bg-black p-1">
         <header
           class="flex justify-between items-center sticky top-0 w-full bg-white dark:bg-black py-2"
@@ -38,10 +24,9 @@ function remove() {
 
         <main class="overflow-auto h-[87vh] p-1">
           <LikesCard
-            v-if="likeList"
-            v-for="item in likeList"
+            v-if="store.likeList.length"
+            v-for="item in store.likeList"
             :item="item"
-            @remove="remove"
           />
         </main>
       </UCard>

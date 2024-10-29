@@ -9,22 +9,11 @@ const props = defineProps({
     default: () => [],
   },
 });
-
-const addToLikeList = (item) => {
-  // Avval localStorage dan mavjud likeList ni olamiz
-  let likeList = JSON.parse(localStorage.getItem("likeList")) || [];
-
-  // Agar element allaqachon mavjud bo'lmasa, uni qo'shamiz
-  if (!likeList.some((el) => el.id === item.id)) {
-    likeList.push(item);
-    localStorage.setItem("likeList", JSON.stringify(likeList));
-  }
-};
 </script>
 
 <template>
   <article
-    class="grid grid-cols-2  sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 auto-rows-[10rem] sm:auto-rows-[14rem] gap-2 relative"
+    class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 auto-rows-[10rem] sm:auto-rows-[14rem] gap-2 relative"
   >
     <!-- <Loading v-if="loading" /> -->
     <figure
@@ -43,8 +32,8 @@ const addToLikeList = (item) => {
       />
       <Button
         icon="ic:round-favorite-border"
-        class="absolute bottom-2 right-2 bg-black  opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-        @click="addToLikeList(item)"
+        class="absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        @click="store.addToLikeList(item)"
       />
     </figure>
   </article>
