@@ -9,9 +9,9 @@
         <Button
           @click="removeFromStorage(item.id)"
           label="remove"
-          class="py-1 rounded-md"
+          class="py-0 rounded-none"
         />
-        <Button label="download" class="py-1 rounded-md" />
+        <Button label="download" class="py-0 rounded-none" />
       </div>
     </div>
   </div>
