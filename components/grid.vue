@@ -32,7 +32,7 @@ const props = defineProps({
       />
       <Button
         icon="ic:round-favorite-border"
-        class="absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        class="absolute bottom-2 right-2 hidden group-hover:flex transition-opacity duration-300"
         @click="store.addToLikeList(item)"
       />
     </figure>

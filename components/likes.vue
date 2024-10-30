@@ -32,7 +32,7 @@ onMounted(() => {
           />
         </header>
 
-        <main class="overflow-auto h-[88vh] mt-4 pe-3">
+        <main class="overflow-auto h-[85vh] mt-4 pe-3">
           <LikesCard
             v-if="store.likeList.length"
             v-for="item in store.likeList"
