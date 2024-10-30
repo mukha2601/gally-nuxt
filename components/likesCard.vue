@@ -7,11 +7,11 @@
       <p class="text-sm">{{ item.alt_description }}</p>
       <div class="flex gap-2">
         <Button
+          icon="material-symbols:delete-outline"
           @click="store.removeFromStorage(item.id)"
-          label="remove"
-          class="py-0 rounded-none"
+          class="py-1 text-xs rounded-none"
         />
-        <Button label="download" class="py-0 rounded-none" />
+        <Button icon="ic:sharp-arrow-downward" class="py-0 rounded-none" />
       </div>
     </div>
   </div>
@@ -20,7 +20,7 @@
 <script setup>
 import { useImageStore } from "@/store/index";
 const store = useImageStore();
-  defineProps({
+defineProps({
   item: {
     type: Object,
     required: true,
