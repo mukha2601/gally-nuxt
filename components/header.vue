@@ -28,12 +28,13 @@
         <Button
           icon="material-symbols:search"
           @click="navigate"
-          class="max-sm:hidden"
+          class="max-sm:hidden rounded-s-none"
         />
         <UPopover
           overlay
           :popper="{ placement: 'bottom-end' }"
           :ui="{ rounded: 'rounded-full' }"
+          class="sm:hidden"
         >
           <Button icon="material-symbols:search" />
 
