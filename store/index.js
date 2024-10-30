@@ -62,6 +62,7 @@ export const useImageStore = defineStore("images", {
         })
         .finally(() => {
           this.loading = false;
+          this.query = "";
         });
     },
     moreImages() {

@@ -19,16 +19,36 @@
       <div class="search min-w-[150px] border-gray-500 flex items-center">
         <input
           type="search"
-          placeholder="search"
+          placeholder="Search"
           v-model="store.query"
           @keyup.enter="navigate"
           class="min-w-[150px] w-full max-sm:hidden px-4 outline-none h-full dark:text-white text-black rounded-s-full"
         />
+
         <Button
           icon="material-symbols:search"
           @click="navigate"
-          class="sm:rounded-s-none"
+          class="max-sm:hidden"
         />
+        <UPopover
+          overlay
+          :popper="{ placement: 'bottom-end' }"
+          :ui="{ rounded: 'rounded-full' }"
+        >
+          <Button icon="material-symbols:search" />
+
+          <template #panel="{ close }">
+            <div class="p-1">
+              <input
+                type="search"
+                placeholder="Search"
+                v-model="store.query"
+                @keyup.enter="navigate(), close()"
+                class="w-[225px] px-4 outline-none h-full dark:text-black text-white dark:bg-white bg-black rounded-full p-4"
+              />
+            </div>
+          </template>
+        </UPopover>
         <Button
           @click="toggleDark()"
           icon="material-symbols:dark-mode-outline"
