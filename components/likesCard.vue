@@ -1,5 +1,5 @@
 <template>
-  <div class="flex mb-4 border-[1px]" :key="item.id">
+  <div class="flex mb-4 border-[1px] dark:border-gray-600" :key="item.id">
     <figure class="overflow-hidden w-[50%] h-32">
       <NuxtImg
         @click="store.openModal(item)"
