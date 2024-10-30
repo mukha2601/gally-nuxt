@@ -26,7 +26,7 @@ const props = defineProps({
         densities="1x"
         :src="item.urls.small_s3"
         :alt="item.alt_description"
-        @click="store.openModal(item), console.log(item)"
+        @click="store.openModal(item)"
         @load="loading = false"
         class="w-full h-full object-cover hover:border-2 border-black"
       />

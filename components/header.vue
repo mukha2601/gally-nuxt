@@ -41,9 +41,11 @@
             @click="store.isLikesOpen = true"
             class="me-2"
           />
-          <span v-if="store.likeList.length > 0" class="absolute top-0 right-1 w-5 h-5 bg-red-600 grid place-content-center rounded-full text-xs">{{
-            store.likeList.length
-          }}</span>
+          <span
+            v-if="store.likeList.length > 0"
+            class="absolute top-0 right-1 w-5 h-5 text-white font-bold bg-red-600 grid place-content-center rounded-full text-xs"
+            >{{ store.likeList.length }}</span
+          >
         </div>
 
         <Button icon="material-symbols:refresh" @click="store.fetchImages" />

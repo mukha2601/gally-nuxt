@@ -1,7 +1,11 @@
 <template>
   <div class="flex mb-4 border-[1px]" :key="item.id">
     <figure class="overflow-hidden w-44 h-32">
-      <NuxtImg :src="item.urls.small_s3" class="w-full h-full object-cover" />
+      <NuxtImg
+        @click="store.openModal(item)"
+        :src="item.urls.small_s3"
+        class="w-full h-full object-cover cursor-pointer"
+      />
     </figure>
     <div class="flex flex-col w-44 justify-between p-2 px-3">
       <p class="text-sm">{{ item.alt_description }}</p>

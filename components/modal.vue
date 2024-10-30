@@ -6,7 +6,7 @@ const store = useImageStore();
 <template>
   <teleport to="body" v-if="store.isOpen">
     <div
-      class="modal-box flex justify-center items-center fixed inset-0 bg-black/50 backdrop-blur-lg z-20"
+      class="modal-box flex justify-center items-center fixed inset-0 bg-black/50 backdrop-blur-lg z-50"
     >
       <div
         class="modal flex flex-col justify-center items-center gap-4 h-[80%] max-w-[90%] relative"

@@ -9,10 +9,20 @@ onMounted(() => {
 
 <template>
   <div>
-    <USlideover v-model="store.isLikesOpen">
-      <UCard class="flex flex-col h-screen relative bg-white dark:bg-black p-1">
+    <USlideover v-model="store.isLikesOpen" :ui="{ rounded: 'rounded-none' }">
+      <UCard
+        :ui="{
+          body: {
+            padding: 'p-0',
+          },
+          rounded: 'rounded-none',
+          strategy: 'override',
+          base: '',
+        }"
+        class="flex flex-col h-screen relative bg-white dark:bg-black p-3"
+      >
         <header
-          class="flex justify-between items-center sticky top-0 w-full bg-white dark:bg-black py-2"
+          class="flex justify-between items-center sticky top-0 w-full bg-white dark:bg-black"
         >
           <p class="text-xl">Liked images</p>
           <Button
@@ -22,7 +32,7 @@ onMounted(() => {
           />
         </header>
 
-        <main class="overflow-auto h-[87vh] p-1">
+        <main class="overflow-auto h-[91vh] mt-3 pe-3">
           <LikesCard
             v-if="store.likeList.length"
             v-for="item in store.likeList"
