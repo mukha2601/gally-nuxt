@@ -32,7 +32,7 @@ const store = useImageStore();
                 ? 'line-md:loading-twotone-loop'
                 : 'ic:sharp-arrow-downward'
             "
-            @click="store.downImg()"
+            @click="store.downImg(store.selectedImage.urls.full)"
           />
           <Button icon="ic:sharp-close" @click="store.closeModal" />
         </div>

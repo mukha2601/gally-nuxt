@@ -101,8 +101,8 @@ export const useImageStore = defineStore("images", {
           }
         });
     },
-    downImg() {
-      const imgUrl = this.selectedImage.urls.full;
+    downImg(imgUrl) {
+      // const imgUrl = this.selectedImage.urls.full;
       this.modalLoading = true;
       this.isDisable = true;
       fetch(imgUrl)

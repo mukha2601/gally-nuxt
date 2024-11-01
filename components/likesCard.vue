@@ -21,7 +21,16 @@
           @click="store.removeFromStorage(item.id)"
           class="py-1 text-xs rounded-none"
         />
-        <Button icon="ic:sharp-arrow-downward" class="py-0 rounded-none" />
+        <Button
+          class="py-0 rounded-none"
+          :disabled="store.isDisable"
+          :icon="
+            store.modalLoading
+              ? 'line-md:loading-twotone-loop'
+              : 'ic:sharp-arrow-downward'
+          "
+          @click="store.downImg(item.urls.full)"
+        />
       </div>
     </div>
   </div>
