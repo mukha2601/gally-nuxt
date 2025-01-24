@@ -24,6 +24,7 @@ const props = defineProps({
       <NuxtImg
         loading="lazy"
         densities="1x"
+        format="webp"
         :src="item.urls.small_s3"
         :alt="item.alt_description"
         @click="store.openModal(item)"

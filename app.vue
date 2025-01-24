@@ -32,11 +32,11 @@ useHead({
   meta: [
     { charset: "utf-8" },
     { name: "viewport", content: "width=device-width, initial-scale=1" },
-    { name: "author", content: "Muhammaddin" },
+    { name: "author", content: "muhammaddin" },
     {
       name: "keywords",
       content:
-        "bepul fotosuratlar, royxatsiz rasmlar yuklash, avtor huquqiga ega bo'lmagan rasmlar, Creative Commons rasmlar, erkin foydalanish fotosuratlari, public domain photos, free images, royalty-free photos, free stock images, no copyright photos, free image download, public domain images, Creative Commons photos",
+        "bepul fotosuratlar, avtor huquqiga ega bo'lmagan rasmlar, public domain photos, free images, royalty-free photos, free stock images, no copyright photos, free image download, public domain images, Creative Commons photos",
     },
   ],
   link: [

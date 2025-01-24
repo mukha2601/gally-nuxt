@@ -15,6 +15,7 @@ const store = useImageStore();
         <NuxtImg
           densities="1x 2x"
           loading="lazy"
+          format="webp"
           :alt="store.selectedImage.alt_description"
           :src="store.selectedImage.urls.regular"
           class="min-w-60 min-h-60 max-w-full max-h-full object-cover"
