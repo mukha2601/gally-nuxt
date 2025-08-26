@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+body {
+  scroll-behavior: smooth;
+  background-color: black;
+}
+
+::-webkit-scrollbar {
+  width: 0.4rem;
+  background-color: rgb(75, 75, 75);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(167, 167, 167);
+}
+
+@theme static {
+  --font-sans: "Public Sans", sans-serif;
+
+  --color-primary: #2563eb;
+  --color-primary-hover: #00000;
+}
