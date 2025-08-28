@@ -12,7 +12,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       unsplashAccessKey: process.env.NUXT_PUBLIC_UNSPLASH_ACCESS_KEY,
-      apiBase: process.env.API_BASE || 'https://api.unsplash.com'
+      apiBase: process.env.API_BASE || "https://api.unsplash.com",
     },
   },
 });

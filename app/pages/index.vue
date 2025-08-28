@@ -1,65 +1,62 @@
 <script setup lang="ts">
 import type { ImageType } from "~/types/types";
 import { getRandomPhotos } from "~/services/random-photo-service";
-import { searchPhotos } from "~/services/search-photo-service";
 import { baseImgProps } from "~/utils/image-props";
+import { useImageStore } from "~/stores/homePage";
 
-// Rasmlar
+// Store
+const store = useImageStore();
+
 const photos = ref<ImageType[]>([]);
-
-// Search
-const query = ref("");
-const loading = ref(false);
+const loading = ref(true);
 
 async function loadRandom() {
   loading.value = true;
   try {
-    photos.value = await getRandomPhotos(30, 1);
+    photos.value = await getRandomPhotos();
   } finally {
     loading.value = false;
   }
 }
 
-async function doSearch() {
-  if (!query.value) return loadRandom();
-  loading.value = true;
-  try {
-    const res = await searchPhotos(query.value, 1, 30);
-    photos.value = res.results;
-  } finally {
-    loading.value = false;
+const columns = computed(() => {
+  const perColumn = 8;
+  const result: ImageType[][] = [];
+  for (let i = 0; i < photos.value.length; i += perColumn) {
+    result.push(photos.value.slice(i, i + perColumn));
   }
-}
+  return result;
+});
 
 onMounted(loadRandom);
 </script>
 
 <template>
-  <div class="p-6">
-    <!-- Qidiruv -->
-    <div class="flex gap-2 mb-6">
-      <input
-        v-model="query"
-        placeholder="Search Unsplash photos..."
-        class="w-full"
-        @keyup.enter="doSearch"
-      />
-      <button @click="doSearch">Search</button>
+  <div>
+    <IconsLoading v-if="loading" />
+
+    <!-- Rasm ustunlari -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-2 p-6">
+      <div
+        v-for="(col, colIndex) in columns"
+        :key="colIndex"
+        class="flex flex-col gap-2"
+      >
+        <NuxtImg
+          v-for="p in col"
+          :key="p.id"
+          v-bind="{
+            ...baseImgProps,
+            src: p.urls.small,
+            alt: p.alt_description ?? '',
+          }"
+          class="hover:p-2 duration-500 cursor-pointer"
+          @click="store.openModal(p)"
+        />
+      </div>
     </div>
 
-    <div v-if="loading" class="text-center text-gray-500">Loading...</div>
-
-    <!-- Rasm grid -->
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 rounded-none">
-      <NuxtImg
-        v-for="p in photos"
-        :key="p.id"
-        v-bind="{
-          ...baseImgProps,
-          src: p.urls.small,
-          alt: p.alt_description ?? '',
-        }"
-      />
-    </div>
+    <!-- Modal -->
+    <ImageModal />
   </div>
 </template>

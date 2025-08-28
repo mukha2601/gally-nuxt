@@ -7,14 +7,11 @@ export const baseImgProps: BaseImgProps = {
   sizes: "sm:100vw md:50vw lg:400px",
   // Responsive dizayn uchun: kichik ekranda 100% kenglik, o‘rtada 50%, katta ekranda 400px
 
-  placeholder: "blur",
-  // Rasm yuklanmaguncha blur preview ko‘rsatadi (UX uchun foydali)
-
   loading: "lazy",
   // Lazy-loading: faqat viewport’ga kirganida rasm yuklanadi (performance)
 
   decoding: "async",
   // Browser rasmni async tarzda decode qiladi (yuklanishni bloklamaydi)
 
-  class: "w-full h-auto rounded-lg shadow-lg object-cover",
+  class: "w-full h-full object-cover",
 };

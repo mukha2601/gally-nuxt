@@ -1,7 +1,7 @@
 <template>
-  <div class="flex w-64">
-    <aside />
-    <main>
+  <div>
+    <Sidebar />
+    <main class="w-full">
       <slot />
     </main>
   </div>
