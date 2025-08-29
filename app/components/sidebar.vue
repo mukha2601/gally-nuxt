@@ -19,7 +19,10 @@ async function doSearch() {
 </script> -->
 
 <template>
-  <div>Search</div>
+  <div class="text-white fixed left-0 flex h-screen items-center">
+    <input type="text" class="bg-white" />
+    <button>search</button>
+  </div>
 </template>
 
 <script lang="ts" setup>

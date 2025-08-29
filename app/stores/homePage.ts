@@ -3,12 +3,13 @@ import type { ImageType } from "~/types/types";
 
 export const useImageStore = defineStore("image", () => {
   // state
+  const query = ref("");
   const isOpen = ref(false);
   const loading = ref(true);
   const selectedImage = ref<ImageType | null>(null);
   const modalLoading = ref(false);
   const isDisable = ref(false);
-  const likeList = ref<ImageType[]>([]);
+  // const likeList = ref<ImageType[]>([]);
 
   // actions
   function openModal(image: ImageType) {
@@ -22,9 +23,9 @@ export const useImageStore = defineStore("image", () => {
     selectedImage.value = null;
   }
 
-  function addToLikeList(image: ImageType) {
-    likeList.value.push(image);
-  }
+  // function addToLikeList(image: ImageType) {
+  //   likeList.value.push(image);
+  // }
 
   async function downImg(url: string) {
     modalLoading.value = true;
@@ -41,16 +42,18 @@ export const useImageStore = defineStore("image", () => {
   // return qilamiz
   return {
     // state
+    query,
     isOpen,
     loading,
     selectedImage,
     modalLoading,
     isDisable,
-    likeList,
+    // likeList,
+
     // actions
     openModal,
     closeModal,
-    addToLikeList,
+    // addToLikeList,
     downImg,
   };
 });

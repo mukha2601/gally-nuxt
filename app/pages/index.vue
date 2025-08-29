@@ -50,7 +50,7 @@ onMounted(loadRandom);
             src: p.urls.small,
             alt: p.alt_description ?? '',
           }"
-          class="hover:p-2 duration-500 cursor-pointer"
+          class="hover:p-4 duration-500 cursor-pointer"
           @click="store.openModal(p)"
         />
       </div>
