@@ -11,7 +11,7 @@ const store = useImageStore();
       <div
         class="modal flex flex-col justify-center items-center gap-4 h-[80%] max-w-[90%] relative"
       >
-        <Loading v-if="store.loading" class="absolute text-white" />
+        <IconsLoading v-if="store.loading" />
         <NuxtImg
           loading="lazy"
           format="webp"

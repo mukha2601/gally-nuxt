@@ -19,8 +19,10 @@ async function doSearch() {
 </script> -->
 
 <template>
-  <div class="text-white fixed left-0 flex h-screen items-center">
-    <input type="text" class="bg-white" />
+  <div
+    class="fixed h-12 flex z-20 left-0 bottom-0 top-1/2 w-full backdrop-blur-xl"
+  >
+    <input type="text" class="bg-white outline-none px-4" />
     <button>search</button>
   </div>
 </template>
