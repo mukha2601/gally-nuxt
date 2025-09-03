@@ -5,13 +5,14 @@ body {
   background-color: black;
 }
 
+/* Barcha scrollbarga taalluqli */
 ::-webkit-scrollbar {
-  width: 0.4rem;
-  background-color: rgb(75, 75, 75);
+  display: none; /* Chrome, Safari */
 }
 
-::-webkit-scrollbar-thumb {
-  background-color: rgb(167, 167, 167);
+* {
+  -ms-overflow-style: none; /* IE va Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 @theme static {

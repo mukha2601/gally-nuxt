@@ -1,5 +1,5 @@
 <script setup>
-import { useImageStore } from "~/stores/homePage";
+import { useImageStore } from "~/stores/home-page";
 const store = useImageStore();
 </script>
 

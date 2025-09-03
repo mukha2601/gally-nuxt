@@ -1,36 +1,33 @@
-<!-- <template>
-  <div></div>
-</template>
-
-<script lang="ts" setup>
-import { searchPhotos } from "~/services/search-photo-service";
-// Search
-const query = ref("");
-async function doSearch() {
-  if (!query.value) return loadRandom();
-  loading.value = true;
-  try {
-    const res = await searchPhotos(query.value, 1, 30);
-    photos.value = res.results;
-  } finally {
-    loading.value = false;
-  }
-}
-</script> -->
-
 <template>
-  <div
-    class="fixed h-12 flex z-20 left-0 bottom-0 top-1/2 w-full backdrop-blur-xl"
-  >
-    <input type="text" class="bg-white outline-none px-4" />
-    <button>search</button>
+  <div class="fixed h-12 flex z-20 left-0 bottom-0 top-1/2 backdrop-blur-xl">
+    <input
+      v-model="query"
+      type="text"
+      placeholder="Search images..."
+      class="flex-1 outline-none hover:pe-8 duration-500 backdrop-blur-2xl text-black bg-white/30 px-4 max-w-96"
+    />
+    <button class="px-4 bg-black/75 text-white" @click="goSearch">
+      <IconsSearch
+        icon="lucide:search"
+        width="24"
+        height="24"
+        style="color: #fff"
+      />
+    </button>
   </div>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
+import { IconsSearch } from "#components";
+
 defineOptions({
   name: "SidebarNav",
 });
-</script>
+const query = ref("");
+const router = useRouter();
 
-<style></style>
+function goSearch() {
+  if (!query.value.trim()) return;
+  router.push({ path: "/results", query: { q: query.value } });
+}
+</script>

@@ -1,4 +1,4 @@
-// ~/services/search.ts
+// ~/services/search-photo-service.ts
 import { useApi } from "~/composables/useApi"
 import type { ImageType } from "~/types/types"
 
