@@ -1,15 +1,19 @@
 <template>
-  <div class="border backdrop:blur-lg px-6 py-3">
-    <i :class="icon" :style="{ opacity: disabled ? 0.5 : 1 }" />
-    {{ label }}
-  </div>
+  <button
+    :type="type || 'button'"
+    class="cursor-pointer duration-300 text-black p-3 flex justify-center items-center"
+    :class="className"
+    :disabled="disabled || false"
+  >
+    <slot />
+  </button>
 </template>
 
 <script lang="ts" setup>
 defineProps<{
-  icon: string;
+  icon?: string;
   disabled?: boolean;
-  label?: string;
+  className?: string;
   type?: "button" | "submit" | "reset";
 }>();
 </script>

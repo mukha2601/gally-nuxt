@@ -1,11 +1,19 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("../fonts/SpaceGrotesk-VariableFont_wght.ttf");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
   scroll-behavior: smooth;
   background-color: black;
+  font-family: "Space Grotesk", sans-serif;
 }
 
-/* Barcha scrollbarga taalluqli */
 ::-webkit-scrollbar {
   display: none; /* Chrome, Safari */
 }
@@ -16,8 +24,8 @@ body {
 }
 
 @theme static {
-  --font-sans: "Public Sans", sans-serif;
+  --font-sans: "Space Grotesk", sans-serif;
 
-  --color-primary: #2563eb;
+  --color-primary: #ffffff;
   --color-primary-hover: #00000;
 }
