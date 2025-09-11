@@ -1,6 +1,6 @@
 <template>
   <div
-    class="fixed h-10 flex z-20 left-2 bottom-2 backdrop-blur-2xl bg-white/20"
+    class="fixed h-10 flex z-20 left-2 max-lg:top-2 bottom-2 backdrop-blur-2xl bg-white/20"
   >
     <!-- Toggle Button -->
     <SharedButton class-name="px-2" @click="toggleSearch">
@@ -20,7 +20,7 @@
       class="flex overflow-hidden transition-all duration-500 ease-in-out"
       :class="{
         'w-0 opacity-0': !isSearchOpen,
-        'w-96 opacity-100': isSearchOpen,
+        'md:w-80 opacity-100': isSearchOpen,
       }"
     >
       <input

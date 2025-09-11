@@ -16,11 +16,13 @@ export const useImageStore = defineStore("image", () => {
     selectedImage.value = image;
     isOpen.value = true;
     loading.value = true;
+    document.body.style.overflow = "hidden";
   }
 
   function closeModal() {
     isOpen.value = false;
     selectedImage.value = null;
+    document.body.style.overflow = "auto";
   }
 
   // function addToLikeList(image: ImageType) {

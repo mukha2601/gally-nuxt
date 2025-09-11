@@ -22,7 +22,7 @@
       </div>
     </div>
 
-    <div v-if="showMore" class="flex justify-center mt-2">
+    <div v-if="showMore" class="flex md:justify-center mt-2">
       <SharedButton
         v-if="!loading"
         :disabled="loading"

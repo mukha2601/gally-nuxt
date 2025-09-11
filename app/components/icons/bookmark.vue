@@ -20,6 +20,6 @@ defineProps<{
     stroke-linejoin="round"
     :class="classT"
   >
-    <path d="M12 5v14m7-7l-7 7l-7-7" />
+    <path d="m19 21l-7-4l-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
   </svg>
 </template>

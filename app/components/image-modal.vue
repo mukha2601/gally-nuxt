@@ -20,14 +20,16 @@ const store = useImageStore();
           class="min-w-60 min-h-60 max-w-full max-h-full object-cover"
           @load="store.loading = false"
         />
-        <div class="flex gap-2 justify-center sticky">
-          <button @click="store.addToLikeList(store.selectedImage)">
-            like
-          </button>
-          <button @click="store.downImg(store.selectedImage.urls.full)">
-            down
-          </button>
-          <Button icon="ic:sharp-close" @click="store.closeModal">close</Button>
+        <div class="flex justify-center sticky">
+          <SharedButton @click="store.addToLikeList(store.selectedImage)">
+            <IconsBookmark />
+          </SharedButton>
+          <SharedButton @click="store.downImg(store.selectedImage.urls.full)">
+            <IconsDownload />
+          </SharedButton>
+          <SharedButton icon="ic:sharp-close" @click="store.closeModal"
+            ><IconsClose color="#000"
+          /></SharedButton>
         </div>
       </div>
     </div>
