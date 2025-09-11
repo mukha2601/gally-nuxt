@@ -1,16 +1,21 @@
 <template>
-  <div class="fixed h-12 flex z-20 left-0 bottom-0 top-1/2 backdrop-blur-2xl bg-white/20">
+  <div
+    class="fixed h-10 flex z-20 left-2 bottom-2 backdrop-blur-2xl bg-white/20"
+  >
     <!-- Toggle Button -->
     <SharedButton class-name="px-2" @click="toggleSearch">
-      <IconsLeft
-        v-if="isSearchOpen"
-        :icon="isSearchOpen ? 'lucide:x' : 'lucide:search'"
-        style="color: #fff"
+      <div v-if="isSearchOpen">
+        <IconsLeft icon="lucide:x" style="color: #000" />
+      </div>
+      <IconsSearch
+        v-else
+        icon="lucide:search"
+        width="24"
+        height="24"
+        style="color: #000"
       />
-      <IconsSearch v-else icon="lucide:search" style="color: #fff" />
     </SharedButton>
 
-    <!-- Search Container with Animation -->
     <div
       class="flex overflow-hidden transition-all duration-500 ease-in-out"
       :class="{
@@ -26,10 +31,20 @@
         class="flex-1 outline-none backdrop-blur-2xl text-black bg-white/30 px-4 min-w-0"
         @keyup.enter="goSearch"
       />
-      <SharedButton class="bg-black/75 text-white shrink-0" @click="goSearch">
-        <IconsSearch icon="lucide:search" style="color: #fff" />
+      <SharedButton class="bg-black/75 shrink-0" @click="goSearch">
+        <IconsSearch
+          icon="lucide:search"
+          width="24"
+          height="24"
+          style="color: #000"
+        />
       </SharedButton>
     </div>
+  </div>
+  <div class="fixed right-2 bottom-2 z-20">
+    <SharedButton>
+      <IconsHome icon="charm:home" width="24" height="24" color="#000" />
+    </SharedButton>
   </div>
 </template>
 
@@ -60,7 +75,6 @@ function toggleSearch() {
 function goSearch() {
   if (!query.value.trim()) return;
   router.push({ path: "/results", query: { q: query.value } });
-  // Search qilingandan so'ng yopish (ixtiyoriy)
   // isSearchOpen.value = false;
 }
 </script>

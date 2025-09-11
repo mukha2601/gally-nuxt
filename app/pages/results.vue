@@ -41,8 +41,8 @@ watch(query, () => loadSearch(true), { immediate: true });
       :photos="photos"
       :loading="loading"
       show-more
-      @imageClick="store.openModal"
-      @loadMore="loadSearch(false)"
+      @load-more="loadSearch(false)"
+      @image-click="store.openModal"
     />
 
     <ImageModal />

@@ -13,7 +13,7 @@ defineProps<{
     viewBox="0 0 24 24"
     :width="size || 18"
     :height="size || 18"
-    fill="none"
+    :fill="color"
     :stroke="color || 'currentColor'"
     :stroke-width="strokeWidth || 2"
     stroke-linecap="round"

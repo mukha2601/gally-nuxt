@@ -2,7 +2,7 @@
   <div>
     <IconsLoading v-if="loading" />
 
-    <div class="flex gap-2 p-2 overflow-hidden">
+    <div class="flex gap-2 overflow-hidden">
       <div
         v-for="(col, colIndex) in columns"
         :key="colIndex"
@@ -22,11 +22,11 @@
       </div>
     </div>
 
-    <div v-if="showMore" class="flex justify-center my-6">
+    <div v-if="showMore" class="flex justify-center mt-2">
       <SharedButton
         v-if="!loading"
         :disabled="loading"
-        class-name="px-8 hover:px-10 py-2 border border-primary/20"
+        class-name="px-8 hover:px-10 py-2"
         @click="emit('loadMore')"
         >Load more</SharedButton
       >
