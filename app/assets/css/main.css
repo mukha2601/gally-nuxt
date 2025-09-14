@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("../fonts/SpaceGrotesk-VariableFont_wght.ttf");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  scroll-behavior: smooth;
+  background-color: black;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+* {
+  -ms-overflow-style: none; /* IE va Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+@theme static {
+  --font-sans: "Space Grotesk", sans-serif;
+
+  --color-primary: #ffffff;
+  --color-primary-hover: #00000;
+}

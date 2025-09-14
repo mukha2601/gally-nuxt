@@ -1,11 +1,18 @@
+import tailwindcss from "@tailwindcss/vite";
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: "2024-04-03",
+  compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
-  modules: ["@nuxt/image", "@pinia/nuxt", "@nuxt/ui", "@vueuse/nuxt"],
+  ssr: false,
+  modules: ["@nuxt/eslint", "@nuxt/image", "@pinia/nuxt"],
+  css: ["~/assets/css/main.css"],
+  vite: {
+    plugins: [tailwindcss()],
+  },
   runtimeConfig: {
     public: {
       unsplashAccessKey: process.env.NUXT_PUBLIC_UNSPLASH_ACCESS_KEY,
+      apiBase: process.env.API_BASE || "https://api.unsplash.com",
     },
   },
 });
