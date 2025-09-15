@@ -5,15 +5,9 @@
     <!-- Toggle Button -->
     <SharedButton class-name="px-2" @click="toggleSearch">
       <div v-if="isSearchOpen">
-        <IconsLeft icon="lucide:x" style="color: #000" />
+        <IconsLeft />
       </div>
-      <IconsSearch
-        v-else
-        icon="lucide:search"
-        width="24"
-        height="24"
-        style="color: #000"
-      />
+      <IconsSearch v-else />
     </SharedButton>
 
     <div
@@ -31,20 +25,32 @@
         class="flex-1 outline-none backdrop-blur-2xl text-black bg-white/30 px-4 min-w-0"
         @keyup.enter="goSearch"
       />
-      <SharedButton class="bg-black/75 shrink-0" @click="goSearch">
-        <IconsSearch
-          icon="lucide:search"
-          width="24"
-          height="24"
-          style="color: #000"
-        />
+      <SharedButton @click="goSearch">
+        <IconsSearch />
       </SharedButton>
     </div>
   </div>
-  <div class="fixed right-2 bottom-2 z-20">
-    <SharedButton>
-      <IconsHome icon="charm:home" width="24" height="24" color="#000" />
+  <div class="fixed flex gap-1 right-2 bottom-2 z-20">
+    <!-- Scroll to top button - only show when scrolled down 200px from bottom -->
+    <SharedButton v-if="showScrollToTop" @click="scrollToTop">
+      <IconsUp />
     </SharedButton>
+
+    <!-- Home button - only show when not on home page -->
+    <SharedButton
+      v-if="!isHomePage"
+      class-name="flex gap-1"
+      @click="() => navigateTo('/')"
+    >
+      <IconsHome />
+    </SharedButton>
+
+    <!-- Refresh button - only show on home page -->
+    <SharedButton v-if="isHomePage" @click="refreshPage">
+      <IconsRefresh />
+    </SharedButton>
+    <!-- Dark mode toggle button -->
+    <ColorModeButton />
   </div>
 </template>
 
@@ -57,6 +63,37 @@ const query = ref("");
 const isSearchOpen = ref(false);
 const searchInput = ref<HTMLInputElement | null>(null);
 const router = useRouter();
+const route = useRoute();
+
+// Scroll to top visibility
+const showScrollToTop = ref(false);
+
+// Check if current page is home
+const isHomePage = computed(() => route.path === "/");
+
+// Scroll event handler
+function handleScroll() {
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const windowHeight = window.innerHeight;
+  const documentHeight = document.documentElement.scrollHeight;
+
+  // Show button when user is 200px or less from the bottom (including at the bottom)
+  const distanceFromBottom = documentHeight - (scrollTop + windowHeight);
+  showScrollToTop.value = distanceFromBottom <= 200;
+}
+
+// Scroll to top function
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+}
+
+// Refresh page function
+function refreshPage() {
+  window.location.reload();
+}
 
 function toggleSearch() {
   isSearchOpen.value = !isSearchOpen.value;
@@ -75,6 +112,18 @@ function toggleSearch() {
 function goSearch() {
   if (!query.value.trim()) return;
   router.push({ path: "/results", query: { q: query.value } });
-  // isSearchOpen.value = false;
+  isSearchOpen.value = false;
 }
+
+// Add scroll event listener on mount
+onMounted(() => {
+  window.addEventListener("scroll", handleScroll);
+  // Initial check
+  handleScroll();
+});
+
+// Remove scroll event listener on unmount
+onUnmounted(() => {
+  window.removeEventListener("scroll", handleScroll);
+});
 </script>

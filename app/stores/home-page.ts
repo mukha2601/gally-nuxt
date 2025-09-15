@@ -9,7 +9,6 @@ export const useImageStore = defineStore("image", () => {
   const selectedImage = ref<ImageType | null>(null);
   const modalLoading = ref(false);
   const isDisable = ref(false);
-  // const likeList = ref<ImageType[]>([]);
 
   // actions
   function openModal(image: ImageType) {
@@ -24,10 +23,6 @@ export const useImageStore = defineStore("image", () => {
     selectedImage.value = null;
     document.body.style.overflow = "auto";
   }
-
-  // function addToLikeList(image: ImageType) {
-  //   likeList.value.push(image);
-  // }
 
   async function downImg(url: string) {
     modalLoading.value = true;
@@ -50,12 +45,9 @@ export const useImageStore = defineStore("image", () => {
     selectedImage,
     modalLoading,
     isDisable,
-    // likeList,
-
     // actions
     openModal,
     closeModal,
-    // addToLikeList,
     downImg,
   };
 });

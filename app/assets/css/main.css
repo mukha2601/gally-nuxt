@@ -10,7 +10,7 @@
 
 body {
   scroll-behavior: smooth;
-  background-color: black;
+  background-color: var(--color-background);
   font-family: "Space Grotesk", sans-serif;
 }
 
@@ -26,6 +26,15 @@ body {
 @theme static {
   --font-sans: "Space Grotesk", sans-serif;
 
-  --color-primary: #ffffff;
-  --color-primary-hover: #00000;
+  --color-background: black;
+  --color-button: #ffffff;
+  --color-icon: #000;
+  --color-text: #000;
+}
+
+.dark-mode {
+  --color-background: white;
+  --color-button: #000;
+  --color-icon: #ffff;
+  --color-text: #ffff;
 }

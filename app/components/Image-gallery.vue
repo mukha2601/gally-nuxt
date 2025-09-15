@@ -16,7 +16,7 @@
             src: p.urls.small,
             alt: p.alt_description ?? '',
           }"
-          class="grayscale hover:grayscale-0 hover:scale-103 hover:z-10 transition duration-300 cursor-pointer"
+          class="sm:grayscale hover:grayscale-0 hover:scale-103 hover:z-10 transition duration-300 cursor-pointer"
           @click="emit('imageClick', p)"
         />
       </div>
@@ -26,7 +26,7 @@
       <SharedButton
         v-if="!loading"
         :disabled="loading"
-        class-name="px-8 hover:px-10 py-2"
+        class-name="px-8 hover:px-10 py-2 text-primary"
         @click="emit('loadMore')"
         >Load more</SharedButton
       >
@@ -68,7 +68,7 @@ const columns = computed(() => {
   const result: ImageType[][] = Array.from({ length: columnCount }, () => []);
 
   photos.value.forEach((photo, index) => {
-    result[index % columnCount].push(photo);
+    result[index % columnCount]?.push(photo);
   });
 
   return result;

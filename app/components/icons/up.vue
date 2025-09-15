@@ -1,5 +1,5 @@
 <template>
   <IconSlug>
-    <path d="M12 5v14m7-7l-7 7l-7-7" />
+    <path d="m18 15l-6-6l-6 6" />
   </IconSlug>
 </template>

@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
   ssr: false,
-  modules: ["@nuxt/eslint", "@nuxt/image", "@pinia/nuxt"],
+  modules: ["@nuxt/eslint", "@nuxt/image", "@pinia/nuxt", "@nuxtjs/color-mode"],
   css: ["~/assets/css/main.css"],
   vite: {
     plugins: [tailwindcss()],
