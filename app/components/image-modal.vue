@@ -1,5 +1,5 @@
 <script setup>
-import { useImageStore } from "~/stores/home-page";
+import { useImageStore } from "~/stores/store";
 const store = useImageStore();
 </script>
 
@@ -21,8 +21,15 @@ const store = useImageStore();
           @load="store.loading = false"
         />
         <div v-if="!store.loading" class="flex justify-center sticky">
-          <SharedButton @click="store.downImg(store.selectedImage.urls.full)">
-            <IconsDownload />
+          <SharedButton
+            :disabled="store.modalLoading"
+            :class-name="
+              store.modalLoading ? 'opacity-50 !cursor-not-allowed' : 'cursor-pointer'
+            "
+            @click="store.downImg(store.selectedImage.urls.full)"
+          >
+            <LoadingMini v-if="store.modalLoading" />
+            <IconsDownload v-else />
           </SharedButton>
           <SharedButton icon="ic:sharp-close" @click="store.closeModal">
             <IconsClose />

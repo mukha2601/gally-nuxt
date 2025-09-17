@@ -30,13 +30,11 @@
       </SharedButton>
     </div>
   </div>
-  <div class="fixed flex gap-1 right-2 bottom-2 z-20">
-    <!-- Scroll to top button - only show when scrolled down 200px from bottom -->
+  <div class="fixed flex right-2 bottom-2 z-20">
     <SharedButton v-if="showScrollToTop" @click="scrollToTop">
       <IconsUp />
     </SharedButton>
 
-    <!-- Home button - only show when not on home page -->
     <SharedButton
       v-if="!isHomePage"
       class-name="flex gap-1"
@@ -45,11 +43,10 @@
       <IconsHome />
     </SharedButton>
 
-    <!-- Refresh button - only show on home page -->
     <SharedButton v-if="isHomePage" @click="refreshPage">
       <IconsRefresh />
     </SharedButton>
-    <!-- Dark mode toggle button -->
+
     <ColorModeButton />
   </div>
 </template>

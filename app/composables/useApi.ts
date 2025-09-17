@@ -7,7 +7,7 @@ export function useApi() {
   const loading = ref(false);
   const lastError = ref<unknown | null>(null);
 
-  async function get<T = any>(
+  async function get<T = undefined>(
     path: string,
     opts: FetchOptions = {}
   ): Promise<T> {
