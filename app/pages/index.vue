@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { ImageType } from "~/types/types";
 import { getRandomPhotos } from "~/services/random-photo-service";
-import { useImageStore } from "~/stores/home-page";
+import { useImageStore } from "~/stores/store";
 
 const store = useImageStore();
 

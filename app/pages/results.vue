@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { ImageType } from "~/types/types";
 import { searchPhotos } from "~/services/search-photo-service";
-import { useImageStore } from "~/stores/home-page";
+import { useImageStore } from "~/stores/store";
 
 const store = useImageStore();
 const route = useRoute();

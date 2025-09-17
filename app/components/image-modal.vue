@@ -1,5 +1,5 @@
 <script setup>
-import { useImageStore } from "~/stores/home-page";
+import { useImageStore } from "~/stores/store";
 const store = useImageStore();
 </script>
 
@@ -9,7 +9,7 @@ const store = useImageStore();
       class="modal-box flex justify-center items-center fixed inset-0 bg-black/20 backdrop-blur-lg z-50"
     >
       <div
-        class="modal flex flex-col justify-center items-center gap-4 h-[80%] max-w-[90%] relative"
+        class="modal flex flex-col justify-center items-center gap-4 h-[90%] max-w-[90%] relative"
       >
         <IconsLoading v-if="store.loading" />
         <NuxtImg
@@ -17,19 +17,23 @@ const store = useImageStore();
           format="webp"
           :alt="store.selectedImage.alt_description"
           :src="store.selectedImage.urls.regular"
-          class="min-w-60 min-h-60 max-w-full max-h-full object-cover"
+          class="min-w-60 min-h-40 max-w-full max-h-full object-cover"
           @load="store.loading = false"
         />
-        <div class="flex justify-center sticky">
-          <SharedButton @click="store.addToLikeList(store.selectedImage)">
-            <IconsBookmark />
+        <div v-if="!store.loading" class="flex justify-center sticky">
+          <SharedButton
+            :disabled="store.modalLoading"
+            :class-name="
+              store.modalLoading ? 'opacity-50 !cursor-not-allowed' : 'cursor-pointer'
+            "
+            @click="store.downImg(store.selectedImage.urls.full)"
+          >
+            <LoadingMini v-if="store.modalLoading" />
+            <IconsDownload v-else />
           </SharedButton>
-          <SharedButton @click="store.downImg(store.selectedImage.urls.full)">
-            <IconsDownload />
+          <SharedButton icon="ic:sharp-close" @click="store.closeModal">
+            <IconsClose />
           </SharedButton>
-          <SharedButton icon="ic:sharp-close" @click="store.closeModal"
-            ><IconsClose color="#000"
-          /></SharedButton>
         </div>
       </div>
     </div>
