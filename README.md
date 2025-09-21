@@ -1,75 +1,23 @@
-# Nuxt Minimal Starter
+# GALLY
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+This website showcases stunning high-quality images powered by the Unsplash API. Explore and download royalty-free photos from talented photographers worldwide, all integrated seamlessly into a modern and responsive design. [GALLY](https://nuxt.com/docs/getting-started/introduction) to 
 
 ## Setup
 
-Make sure to install dependencies:
 
 ```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
 
 # yarn
 yarn install
 
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
+# Development Server
 yarn dev
 
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
+# Production
 yarn build
 
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
+# Locally preview production build
 yarn preview
 
-# bun
-bun run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
