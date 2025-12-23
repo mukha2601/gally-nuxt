@@ -74,9 +74,10 @@ function handleScroll() {
   const windowHeight = window.innerHeight;
   const documentHeight = document.documentElement.scrollHeight;
 
-  // Show button when user is 200px or less from the bottom (including at the bottom)
+  // Show button when user has scrolled down (e.g., > 300px) 
+  // AND is close to the bottom (distance from bottom <= 200px)
   const distanceFromBottom = documentHeight - (scrollTop + windowHeight);
-  showScrollToTop.value = distanceFromBottom <= 200;
+  showScrollToTop.value = scrollTop > 300 && distanceFromBottom <= 200;
 }
 
 // Scroll to top function
